@@ -1,0 +1,8 @@
+{
+    "cmake.sourceDirectory": "/home/preston/work/pod_ini/sources",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/**",
+        "/home/preston/work/pod_ini/sources/**"
+    ]   
+}
