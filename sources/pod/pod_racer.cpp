@@ -1,4 +1,4 @@
-#include "pod_racer.h"
+#include "pod/pod_racer.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -123,6 +123,8 @@ bool pod_reader_o::scan_line(char* p_bol, char* p_eol) {
     return false;
 }
 
+static const char* k_GLOBAL = "GLOBAL";
+
 //
 //  POD section key scanner.
 //
@@ -146,7 +148,7 @@ bool pod_reader_o::scan_section_key(char* p_bol, char* p_eol) {
     key_normalize(p_bok, p_eok);
     if (!*p_bol) {
         // Disallow an empty section key.
-        key_section = "GLOBAL";
+        key_section = k_GLOBAL;
     } else {
         // We now have a normalized section key.
         key_section = p_bol;
@@ -195,10 +197,12 @@ void pod_racer::pod_reader_o::key_normalize(char* p_bok, char* p_eok) {
     for (auto p1 = p_bok; p1 < p_eok; ++p1) {
         auto c1 = *p1;
         if (('.' == c2) && ::isdigit(c1)) {
+            // First character must not be a digit.
             c2 = 0;
             *(p2 - 1) = '_';
             *p2++ = c1;
         } else if (::isalnum(c1)) {
+            // Alphanumeric characters are allowed.
             c2 = 0;
             *p2++ = c1;
         } else if (::isspace(c1) || ('_' == c1)) {
@@ -238,7 +242,7 @@ bool pod_reader_o::key_value_store(char* k, char* v) {
 
 pod_reader_o::pod_reader_o(pod_hashtable_o& o) :
     p_table(&o.table) {
-    key_section = "GLOBAL";
+    key_section = k_GLOBAL;
 }
 
 //
@@ -256,9 +260,6 @@ pod_reader_o::~pod_reader_o() {
 //
 
 void pod_racer::pod_hashtable_o::table_sort(hash_list_o& list) {
-    if (!table.as_list(list)) {
-        return;
-    }
     ::qsort(list.pp_list, list.n_nodes, sizeof(base_hash::node_p), [](const void* p1, const void* p2) {
         auto n1 = *(base_hash::node_p*) p1;
         auto n2 = *(base_hash::node_p*) p2;
@@ -267,14 +268,126 @@ void pod_racer::pod_hashtable_o::table_sort(hash_list_o& list) {
 }
 
 //
+//
+//
+
+static constexpr unsigned N_PARTS_MAX = 20;
+
+struct pod_racer::key_parts_o {
+    string_o parts;
+    unsigned ac = 0;
+    const char* av[N_PARTS_MAX + 1] = {0};
+    key_parts_o(const char*);
+};
+
+pod_racer::key_parts_o::key_parts_o(const char* s) {
+    parts = s;
+    auto p1 = parts.buffer_get();
+    for (ac = 0;;) {
+        av[ac++] = p1;
+        if (N_PARTS_MAX <= ac) {
+            break;
+        }
+        p1 = ::strchr(p1, '.');
+        if (!p1) {
+            break;
+        }
+        *p1++ = 0;
+    }
+    av[ac] = 0;
+}
+
+//
+//  POD tree insert - assumes inserts are in sorted order.
+//
+
+void pod_racer::pod_hashtable_o::tree_insert_node(counted_tree_o& root, node_p p_node) {
+    key_parts_o k_node(p_node->key);
+    auto p_check = &root;
+    unsigned i = 0;
+    // Walk down the existing tree.
+    for (; i < k_node.ac;) {
+        const char* k1 = p_check->key.buffer_get();
+        const char* k2 = k_node.av[i];
+        if (0 == ::strcmp(k1, k2)) {
+            ++i;  // consume the key
+            if (!p_check->p_right) {
+                break;
+            }
+            p_check = p_check->p_right;
+        } else {
+            if (!p_check->p_after) {
+                p_check->p_after = new counted_tree_o(k_node.av[i++]);
+                p_check = p_check->p_after;
+                break;
+            }
+            p_check = p_check->p_after;
+        }
+    }
+    // Must create remainder of branch.
+    for (; i < k_node.ac; ++i) {
+        p_check->p_right = new counted_tree_o(k_node.av[i]);
+        p_check = p_check->p_right;
+    }
+    // Associate the value.
+    p_check->p_node = p_node;
+}
+
+//
+//
+//
+
+void pod_racer::counted_tree_o::tree_print_nodes(const char* prefix, unsigned i1, unsigned i2) {
+    string_o key1 = prefix;
+    key1.strcat(".");
+    key1.strcat(key);
+    if (p_node) {
+        auto s_key1 = key1.buffer_get();
+        auto s_key2 = p_node->key.buffer_get();
+        auto s_value = p_node->value.buffer_get();
+        ::printf("[%4u,%4u] %4u %s (%s) = '%s'\n", i1, i2, count, s_key1, s_key2, s_value);
+    } else {
+        ::printf("[%4u,%4u] %4u %s\n", i1, i2, count, key1.buffer_get());
+    }
+    if (p_right) {
+        p_right->tree_print_nodes(key1, i1, 1 + i2);
+    }
+    if (p_after) {
+        p_after->tree_print_nodes(prefix, 1 + i1, i2);
+    }
+}
+
+//
+//
+//
+
+unsigned pod_racer::pod_hashtable_o::tree_count_nodes(counted_tree_o* p_tree) {
+    if (!p_tree) {
+        return 0;
+    }
+    unsigned n1 = 0;
+    unsigned n2 = 0;
+    unsigned n3 = 0;
+    if (p_tree->p_node) {
+        n1 = 1;
+    }
+    if (p_tree->p_right) {
+        n2 = tree_count_nodes(p_tree->p_right);
+    }
+    if (p_tree->p_after) {
+        n3 = tree_count_nodes(p_tree->p_after);
+    }
+    p_tree->count = (n1 + n2);
+    return (n1 + n2 + n3);
+}
+
+//
 //  Print POD hash table (unsorted).
 //
 
 void pod_hashtable_o::table_print_unsorted() {
     base_hash::hash_list_o list;
-    if (!table.as_list(list)) {
-        return;
-    }
+    table.as_list(list);
     for (unsigned i = 0; i < list.n_nodes; ++i) {
         auto p = list.pp_list[i];
         ::printf("[%u] %s = %s\n", i, p->key.buffer_get(), p->value.buffer_get());
@@ -287,11 +400,30 @@ void pod_hashtable_o::table_print_unsorted() {
 
 void pod_racer::pod_hashtable_o::table_print_sorted() {
     base_hash::hash_list_o list;
+    table.as_list(list);
     table_sort(list);
     for (unsigned i = 0; i < list.n_nodes; ++i) {
         auto p = list.pp_list[i];
         ::printf("[%u] %s = %s\n", i, p->key.buffer_get(), p->value.buffer_get());
     }
+}
+
+//
+//  Print POD hash table counts for keys.
+//
+
+void pod_racer::pod_hashtable_o::table_print_counts() {
+    base_hash::hash_list_o list;
+    table.as_list(list);
+    table_sort(list);
+    base_hash::counted_tree_o tree(k_GLOBAL);
+    for (unsigned i = 0; i < list.n_nodes; ++i) {
+        auto p = list.pp_list[i];
+        tree_insert_node(tree, p);
+    }
+    unsigned n_total = tree_count_nodes(&tree);
+    ::printf("Total: %u\n", n_total);
+    tree.tree_print_nodes();
 }
 
 //

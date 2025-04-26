@@ -7,9 +7,13 @@
 
 namespace pod_racer {
 
+using base_hash::counted_tree_o;
 using base_hash::hash256_o;
 using base_hash::hash_list_o;
+using base_hash::node_p;
 using base_strings::string_o;
+
+struct key_parts_o;
 
 //
 //
@@ -19,12 +23,17 @@ class pod_hashtable_o {
 public:
     hash256_o table;
 
+protected:
+    void tree_insert_node(counted_tree_o&, node_p);
+    unsigned tree_count_nodes(counted_tree_o*);
+
 public:
     void table_sort(hash_list_o&);
 
 public:
     void table_print_unsorted();
     void table_print_sorted();
+    void table_print_counts();
     void table_print_pod();
 };
 

@@ -38,15 +38,15 @@ add_compile_options(-g)
 add_compile_options(-Og)
 
 include_directories(
-    ${PROJECT_SOURCE_DIR}
+    ${PROJECT_SOURCE_DIR}/include
 )
 
 add_executable(
     POD_RACER
     base/strings.cpp
     base/hash.cpp
-    base/pod_racer.cpp 
-    reader.cpp    
+    pod/pod_racer.cpp 
+    tools/reader.cpp    
 )
 set_target_properties(
     POD_RACER
