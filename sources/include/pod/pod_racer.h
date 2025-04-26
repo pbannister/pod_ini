@@ -1,20 +1,20 @@
 #pragma once
 //
-//
+//  Pod Racer - INI/Properties file reader and conversion to POD format. 
 //
 #include "base/strings.h"
 #include "base/hash.h"
 
 namespace pod_racer {
 
-using base_hash::counted_tree_o;
 using base_hash::hash256_o;
 using base_hash::hash_list_o;
 using base_hash::node_p;
 using base_strings::string_o;
 
 //
-//
+//  Class to hold a hash table of key/value pairs.
+//  Methods for verification and conversion to POD format.
 //
 
 class pod_hashtable_o {
@@ -22,14 +22,13 @@ public:
     hash256_o table;
 
 public:
-    void table_print_unsorted();
-    void table_print_sorted();
-    void table_print_counts();
-    void table_print_pod();
+    void as_list(hash_list_o& list) {
+        table.as_list(list);
+    }
 };
 
 //
-//
+//  Class to read INI/PROPERTIES files and convert to POD format.
 //
 
 class pod_reader_o {

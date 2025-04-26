@@ -124,6 +124,18 @@ void base_hash::hash_list_o::list_sort() {
         return ::strcmp(n1->key.buffer_get(), n2->key.buffer_get());
     });
 }
+
+//
+//
+//
+
+void base_hash::hash_list_o::list_print() {
+    for (unsigned i = 0; i < n_nodes; ++i) {
+        auto p = pp_list[i];
+        ::printf("[%u] %s = %s\n", i, p->key.buffer_get(), p->value.buffer_get());
+    }
+}
+
 //
 //
 //
@@ -145,81 +157,76 @@ key_parts_o::key_parts_o(const char* s) {
         if (N_PARTS_MAX <= ac) {
             break;
         }
-        p1 = ::strchr(p1, '.');
-        if (!p1) {
+        auto p2 = ::strchr(p1, '.');
+        if (!p2) {
+            p2 = ::strchr(p1, '!');
+            *p2++ = 0;
+            av[ac++] = p2;
             break;
         }
+        p1 = p2;
         *p1++ = 0;
     }
     av[ac] = 0;
 }
 
 //
-//  Add list to tree.
+//
 //
 
-void base_hash::counted_tree_o::tree_insert_node(node_p p_node) {
-    key_parts_o k_node(p_node->key);
-    auto p_check = this;
-    unsigned i = 0;
-    // Walk down the existing tree.
-    for (; i < k_node.ac;) {
-        const char* k1 = p_check->key.buffer_get();
-        const char* k2 = k_node.av[i];
-        if (0 == ::strcmp(k1, k2)) {
-            ++i;  // consume the key
-            if (!p_check->p_right) {
-                break;
-            }
-            p_check = p_check->p_right;
-        } else {
-            if (!p_check->p_after) {
-                p_check->p_after = new counted_tree_o(k_node.av[i++]);
-                p_check = p_check->p_after;
-                break;
-            }
-            p_check = p_check->p_after;
-        }
-    }
-    // Must create remainder of branch.
-    for (; i < k_node.ac; ++i) {
-        p_check->p_right = new counted_tree_o(k_node.av[i]);
-        p_check = p_check->p_right;
-    }
-    // Associate the value.
-    p_check->p_node = p_node;
-}
+struct base_hash::tree_root_o::value_o {
+    node_o* p_node = 0;
+    value_o* p_value_next = 0;
+};
 
-void base_hash::counted_tree_o::list_add(hash_list_o& list) {
+struct base_hash::tree_root_o::section_o {
+    string_o key;
+    section_o* p_section_next = 0;
+    value_o* p_value_head = 0;
+    value_o* p_value_tail = 0;
+};
+
+void base_hash::tree_root_o::list_add(hash_list_o& list) {
+    string_o section1;
     for (unsigned i = 0; i < list.n_nodes; ++i) {
-        auto p = list.pp_list[i];
-        tree_insert_node(p);
-    }
-}
-static const char s_spaces[] =
-    "| | | | | | | | | | | | | | | | | | | | | | | | | "  //
-    "| | | | | | | | | | | | | | | | | | | | | | | | | "  //
-    "| | | | | | | | | | | | | | | | | | | | | | | | | "  //
-    "| | | | | | | | | | | | | | | | | | | | | | | | | "  //
-    ;
-
-void base_hash::counted_tree_o::tree_print(unsigned i1, unsigned i2) {
-    {
-        unsigned n_spaces = (sizeof(s_spaces) - 1);
-        unsigned i_spaces = (n_spaces - ((i1 * 2) % n_spaces));
-        auto p_spaces = (s_spaces + i_spaces);
-        auto s_key = p_node->key.buffer_get();
-        if (p_node) {
-            auto s_value = p_node->value.buffer_get();
-            ::printf("%4u: %s %s='%s'\n", i1, p_spaces, s_key, s_value);
+        auto p_node = list.pp_list[i];
+        string_o section2(p_node->key);
+        auto p = ::strrchr(section2.buffer_get(), '!');
+        *p = 0;
+        if (0 != ::strcmp(section1, section2)) {
+            section1 = section2;
+            auto p_section = new section_o();
+            p_section->key = section1;
+            if (!p_section_tail) {
+                p_section_head = p_section;
+                p_section_tail = p_section;
+            } else {
+                p_section_tail->p_section_next = p_section;
+                p_section_tail = p_section;
+            }
+        }
+        auto p_value = new value_o();
+        p_value->p_node = p_node;
+        if (!p_section_tail->p_value_head) {
+            p_section_tail->p_value_head = p_value;
+            p_section_tail->p_value_tail = p_value;
         } else {
-            ::printf("%4u: %s %s\n", i1, p_spaces, s_key);
+            p_section_tail->p_value_tail->p_value_next = p_value;
+            p_section_tail->p_value_tail = p_value;
         }
     }
-    if (p_right) {
-        p_right->tree_print(i1, 1 + i2);
+}
+
+void base_hash::tree_root_o::tree_print_ini() {
+    for (auto p_section = p_section_head; p_section; p_section = p_section->p_section_next) {
+        auto s_section = p_section->key.buffer_get();
+        ::printf("\n[%s]\n", s_section);
+        for (auto p_value = p_section->p_value_head; p_value; p_value = p_value->p_value_next) {
+            auto s_key = p_value->p_node->key.buffer_get();
+            auto s_value = p_value->p_node->value.buffer_get();
+            auto s_k = (::strchr(s_key, '!') + 1);
+            ::printf("%s='%s'\n", s_k, s_value);
+        }
     }
-    if (p_after) {
-        p_after->tree_print(1 + i1, i2);
-    }
+    ::printf("\n");
 }

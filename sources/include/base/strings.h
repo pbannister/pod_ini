@@ -13,6 +13,7 @@ namespace base_strings {
 //  Uses a thread-safe free list for efficient allocation.
 //  One limitation: cannot re-allocate or free on different thread.
 //  Put differently, disallows re/de-allocation on other threads.
+//  (Needs more test of multi-thread access.)
 //
 
 class string_o {

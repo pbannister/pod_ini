@@ -114,6 +114,7 @@ char* string_recycler_o::buffer_new() {
     }
     auto p = p_free;
     p_free = p->p_next;
+    p->p_next = 0;
     X_TRACE(("TRACE: %p : %p -- allocate small string from free list\n", this, p));
     return (char*) p;
 }

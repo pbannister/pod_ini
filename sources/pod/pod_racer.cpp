@@ -191,7 +191,7 @@ bool pod_reader_o::scan_key_value(char* p_bol, char* p_eol) {
 //  POD key normalizer.
 //
 
-void pod_racer::pod_reader_o::key_normalize(char* p_bok, char* p_eok) {
+void pod_reader_o::key_normalize(char* p_bok, char* p_eok) {
     // Allow only characters that are acceptable in a C field name.
     char c2 = '.';
     auto p2 = p_bok;
@@ -234,6 +234,11 @@ bool pod_reader_o::key_value_store(char* k, char* v) {
     string_o key = key_section;
     key.strcat(".");
     key.strcat(k);
+    // Want to replace last '.' with '!' so values sort before sections.
+    auto p = ::strrchr(key.buffer_get(), '.');
+    if (p) {
+        *p = '!';
+    }
     return p_table->hash_kv_add(key, v);
 }
 
@@ -254,113 +259,4 @@ pod_reader_o::~pod_reader_o() {
     delete p_buffer;
     p_buffer = 0;
     bytes_buffer = 0;
-}
-
-//
-//
-//
-
-void pod_racer::counted_tree_o::tree_print_nodes(const char* prefix, unsigned i1, unsigned i2) {
-    string_o key1 = prefix;
-    key1.strcat(".");
-    key1.strcat(key);
-    if (p_node) {
-        auto s_key1 = key1.buffer_get();
-        auto s_key2 = p_node->key.buffer_get();
-        auto s_value = p_node->value.buffer_get();
-        ::printf("[%4u,%4u] %4u %s (%s) = '%s'\n", i1, i2, count, s_key1, s_key2, s_value);
-    } else {
-        ::printf("[%4u,%4u] %4u %s\n", i1, i2, count, key1.buffer_get());
-    }
-    if (p_right) {
-        p_right->tree_print_nodes(key1, i1, 1 + i2);
-    }
-    if (p_after) {
-        p_after->tree_print_nodes(prefix, 1 + i1, i2);
-    }
-}
-
-//
-//
-//
-
-unsigned base_hash::counted_tree_o::tree_count_nodes() {
-    unsigned n1 = 0;
-    unsigned n2 = 0;
-    unsigned n3 = 0;
-    if (p_node) {
-        n1 = 1;
-    }
-    if (p_right) {
-        n2 = p_right->tree_count_nodes();
-    }
-    if (p_after) {
-        n3 = p_after->tree_count_nodes();
-    }
-    count = (n1 + n2);
-    return (n1 + n2 + n3);
-}
-
-//
-//  Print POD hash table (unsorted).
-//
-
-void pod_hashtable_o::table_print_unsorted() {
-    base_hash::hash_list_o list;
-    table.as_list(list);
-    for (unsigned i = 0; i < list.n_nodes; ++i) {
-        auto p = list.pp_list[i];
-        ::printf("[%u] %s = %s\n", i, p->key.buffer_get(), p->value.buffer_get());
-    }
-}
-
-//
-//  Print POD hash table (sorted).
-//
-
-void pod_racer::pod_hashtable_o::table_print_sorted() {
-    base_hash::hash_list_o list;
-    table.as_list(list);
-    list.list_sort();
-    for (unsigned i = 0; i < list.n_nodes; ++i) {
-        auto p = list.pp_list[i];
-        ::printf("[%u] %s = %s\n", i, p->key.buffer_get(), p->value.buffer_get());
-    }
-}
-
-//
-//  Print POD hash table counts for keys.
-//
-
-void pod_racer::pod_hashtable_o::table_print_counts() {
-    base_hash::hash_list_o list;
-    table.as_list(list);
-    list.list_sort();
-    base_hash::counted_tree_o tree(k_GLOBAL, list);
-    unsigned n_total = tree.tree_count_nodes();
-    ::printf("Total: %u\n", n_total);
-    tree.tree_print_nodes();
-}
-
-//
-//
-//
-
-void pod_racer::pod_hashtable_o::table_print_pod() {
-    base_hash::hash_list_o list;
-    list.list_sort();
-    // string_o prefix1 = "";
-    // for (unsigned i = 0; i < list.n_nodes; ++i) {
-    //     auto kv = list.pp_list[i];
-    //     string_o name = kv->key;
-    //     string_o value = kv->value;
-    //     auto p_path = name.buffer_get();
-    //     auto p = ::strrchr(p_path, '.');
-    //     *p = 0;
-    //     auto p_leaf = (1 + p);
-    //     //
-    //     if (0 != ::strcmp(p_path, prefix1.buffer_get())) {
-    //         //
-    //     }
-    // }
 }

@@ -10,8 +10,8 @@ struct options_o {
     int want_unsorted = 0;
     int want_sorted = 0;
     int want_counts = 0;
+    int want_ini = 0;
     int want_pod = 0;
-    int want_tree = 0;
 };
 
 int is_verbose(int) {
@@ -32,9 +32,8 @@ static void usage(char** av) {
         "\n\t-v       Verbose output"
         "\n\t-u       Print unsorted hash table"
         "\n\t-s       Print sorted hash table"
-        "\n\t-c       Print counts for each key"
-        "\n\t-p       Print POD hash table"
-        "\n\t-t       Print tree"
+        "\n\t-i       Print INI file format"
+        "\n\t-p       Print POD table"
         "\n\nReads POD files and prints the hash table."
         "\n",
         av[0]);
@@ -47,7 +46,7 @@ static void usage(char** av) {
 
 bool options_get(int ac, char** av) {
     for (;;) {
-        int c = ::getopt(ac, av, "vuscpt");
+        int c = ::getopt(ac, av, "vusip");
         if (c < 0) {
             break;
         }
@@ -61,14 +60,11 @@ bool options_get(int ac, char** av) {
         case 's':
             g_options.want_sorted++;
             break;
-        case 'c':
-            g_options.want_counts++;
+        case 'i':
+            g_options.want_ini++;
             break;
         case 'p':
             g_options.want_pod++;
-            break;
-        case 't':
-            g_options.want_tree++;
             break;
         default:
             usage(av);
@@ -86,25 +82,38 @@ int main(int ac, char** av) {
     if (!options_get(ac, av)) {
         return 1;
     }
+
+    // Read all files into a hash table.
     pod_racer::pod_hashtable_o table;
     for (int i = 1; i < ac; ++i) {
         pod_racer::pod_reader_o pod(table);
         pod.file_read(av[i]);
     }
+
+    // Convert the hash table to a list.
+    base_hash::hash_list_o list;
+    table.as_list(list);
+    
     if (g_options.want_unsorted) {
-        table.table_print_unsorted();
+        list.list_print();
     }
+    
+    // Sort the list.
+    list.list_sort();
+    
     if (g_options.want_sorted) {
-        table.table_print_sorted();
+        list.list_print();
     }
-    if (g_options.want_counts) {
-        table.table_print_counts();
+    
+    // Create a tree from the list.
+    base_hash::tree_root_o tree;
+    tree.list_add(list);
+
+    if (g_options.want_ini) {
+        tree.tree_print_ini();
     }
     if (g_options.want_pod) {
-        table.table_print_pod();
-    }
-    if (g_options.want_tree) {
-        // table.table_print_tree();
+        // table.table_print_pod();
     }
     return 0;
 }
