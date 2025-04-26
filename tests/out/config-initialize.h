@@ -1,0 +1,1916 @@
+
+struct configuration_pod_t configuration_pod = {
+    { // Shell_Search_Provider
+        "false", // AutoStart
+        "org.gnome.seahorse.Application", // BusName
+        "false", // DefaultDisabled
+        "org.gnome.seahorse.Application.desktop", // DesktopId
+        "/org/gnome/seahorse/Application", // ObjectPath
+        "2", // Version
+    },
+    { // XML_LibXML_SAX_Parser_http_xml_org_sax_features
+        "1", // namespaces
+    },
+    { // XML_LibXML_SAX_http_xml_org_sax_features
+        "1", // namespaces
+    },
+    { // XML_SAX_Expat_http_xml_org_sax_features
+        "1", // namespaces
+    },
+    { // XML_SAX_Expat_http_xml_org_sax_features_external_general
+        "1", // entities
+    },
+    { // XML_SAX_Expat_http_xml_org_sax_features_external_parameter
+        "1", // entities
+    },
+    { // XML_SAX_PurePerl_http_xml_org_sax_features
+        "1", // namespaces
+    },
+    { // captions
+        "", // abstract
+        "", // also
+        "", // appendix
+        "[chapter][ ][[appendix]]", // appendix_template
+        "", // author
+        "", // bib
+        "", // cc
+        "", // chapter
+        "[[prechapter]] [chapter] [[postchapter]]", // chapter_template
+        "", // contents
+        "", // encl
+        "", // figure
+        "[figure][ ][[figure]]", // figure_template
+        "", // glossary
+        "", // glossaryname
+        "", // headto
+        "", // index
+        "", // listfigure
+        "", // listtable
+        "", // page
+        "", // part
+        "[[prepart]] [part] [[postpart]]", // part_template
+        "", // postchapter
+        "", // postpart
+        "", // postsection
+        "", // prechapter
+        "", // preface
+        "", // prepart
+        "", // presection
+        "", // proof
+        "", // ref
+        "[[presection]] [section] [[postsection]]", // section_template
+        "", // see
+        "", // table
+        "[table][ ][[table]]", // table_template
+    },
+    { // captions_licr
+        "", // abstract
+        "", // also
+        "", // appendix
+        "[chapter][ ][[appendix]]", // appendix_template
+        "", // bib
+        "", // cc
+        "", // chapter
+        "[chapter][ ][[chapter]]", // chapter_template
+        "", // contents
+        "", // encl
+        "", // figure
+        "[figure][ ][[figure]]", // figure_template
+        "", // glossary
+        "\\CYRR\\cyre\\cyrch\\cyrn\\cyri\\cyrk", // glossaryname
+        "", // headto
+        "", // index
+        "", // listfigure
+        "", // listtable
+        "", // page
+        "", // part
+        "[part][ ][[part]]", // part_template
+        "", // preface
+        "", // proof
+        "", // ref
+        "", // see
+        "", // table
+        "[table][ ][[table]]", // table_template
+    },
+    { // characters
+        "[á à ă â å ä ã ā æ ç é è ĕ ê ë ē í ì ĭ î ï ī ñ ó ò ŏ ô ö ø ō œ ú ù ŭ û ü ū ÿ]", // auxiliary
+        "uV", // casing
+        "[a b {bh} c {ch} d {dl} {dy} e f g {gc} {gq} {gx} h {hh} {hl} i j k {kh} {kl} {kp} l m n {nc} {ngc} {ngq} {ngx} {nhl} {nk} {nkc} {nkq} {nkx} {nq} {ntsh} {nx} {ny} o p {ph} q {qh} r {rh} s {sh} t {th} {tl} {ts} {tsh} u v w x {xh} y z]", // exemplarCharacters
+        "[A B C D E F G H I J K L M N O P Q R S T U V W X Y Z]", // index
+        "[\\\\- , ; \\\\: ! ? . ( ) \\\\[ \\\\] \\\\{ \\\\}]", // punctuation
+        "16FE0..16FFF 17000..187FF 18800..18AFF 18D00..18D7F", // ranges
+    },
+    { // characters_casing
+        "uU vV", // Nouv
+        "uV", // Uv
+    },
+    { // characters_delimiters
+        "", // quotes
+        "", // quotes_0
+    },
+    { // characters_delimiters_quotes
+        "", // A
+    },
+    { // counters
+        "", // abjad
+        "", // afar
+        "", // agaw
+        "", // akshar
+        "", // alphabetic
+        "", // ancient_1
+        "", // ancient_2
+        "", // ancient_3
+        "", // ancient_4
+        "", // ari
+        "", // blin
+        "", // consonant
+        "", // dizi
+        "", // epact_1
+        "", // epact_2
+        "", // epact_3
+        "", // epact_4
+        "", // formal_1
+        "", // formal_2
+        "", // formal_3
+        "", // formal_4
+        "", // gedeo
+        "", // gumuz
+        "", // hadiyya
+        "", // harari
+        "", // hiragana
+        "", // informal_1
+        "", // informal_2
+        "", // informal_3
+        "", // informal_4
+        "", // kaffa
+        "", // katakana
+        "", // kebena
+        "", // kembata
+        "", // konso
+        "", // kunama
+        "", // letters_1
+        "", // letters_2
+        "", // letters_3
+        "", // letters_4
+        "", // lower
+        "", // meen
+        "", // oromo
+        "", // saho
+        "", // sidama
+        "", // silti
+        "", // syllable
+        "", // tigre
+        "", // upper
+        "", // wolaita
+        "", // yemsa
+    },
+    { // counters_circled
+        "", // ideograph
+        "", // katakana
+    },
+    { // counters_cjk_earthly
+        "", // branch
+    },
+    { // counters_cjk_heavenly
+        "", // stem
+    },
+    { // counters_date
+        "", // day
+        "1-jén 2-án 3-án 4-én 5-én 6-án 7-én 8-án 9-én 10-én 11-én 12-én 13-án 14-én 15-én 16-án 17-én 18-án 19-én 20-án 21-én 22-én 23-án 24-én 25-én 26-án 27-én 28-án 29-én 30-án 31-én", // onday
+    },
+    { // counters_formal
+        "", // F_0
+    },
+    { // counters_fullwidth_lower
+        "", // alpha
+    },
+    { // counters_fullwidth_upper
+        "", // alpha
+    },
+    { // counters_hangul
+        "", // formal_1
+        "", // formal_2
+        "", // formal_3
+        "", // formal_4
+    },
+    { // counters_hangul_formal
+        "", // F_0
+    },
+    { // counters_hanja
+        "", // formal_1
+        "", // formal_2
+        "", // formal_3
+        "", // formal_4
+        "", // informal_1
+        "", // informal_2
+        "", // informal_3
+        "", // informal_4
+    },
+    { // counters_hanja_formal
+        "", // F_0
+    },
+    { // counters_hanja_informal
+        "", // F_0
+    },
+    { // counters_hiragana
+        "", // iroha
+    },
+    { // counters_informal
+        "", // F_0
+    },
+    { // counters_katakana
+        "", // iroha
+    },
+    { // counters_letters
+        "", // F_15
+        "", // F_16
+        "", // F_17
+        "", // F_18
+        "", // F_19
+    },
+    { // counters_lower
+        "", // ancient_1
+        "", // ancient_2
+        "", // ancient_3
+        "", // ancient_4
+        "", // full
+        "a b c d e f g h i l m n o p q r s t u v z", // legal
+        "", // letters_1
+        "", // letters_2
+        "", // letters_3
+        "", // letters_4
+        "", // modern_1
+        "", // modern_2
+        "", // modern_3
+        "", // modern_4
+    },
+    { // counters_lower_ancient
+        "", // S_321
+    },
+    { // counters_lower_modern
+        "", // S_321
+    },
+    { // counters_maghrebi
+        "", // abjad
+    },
+    { // counters_parenthesized
+        "", // ideograph
+    },
+    { // counters_upper
+        "", // ancient_1
+        "", // ancient_2
+        "", // ancient_3
+        "", // ancient_4
+        "", // full
+        "A B C D E F G H I L M N O P Q R S T U V Z", // legal
+        "", // letters_1
+        "", // letters_2
+        "", // letters_3
+        "", // letters_4
+        "", // modern_1
+        "", // modern_2
+        "", // modern_3
+        "", // modern_4
+    },
+    { // counters_upper_ancient
+        "", // S_321
+    },
+    { // counters_upper_modern
+        "", // S_321
+    },
+    { // date_buddhist
+        "[d] [MMMM] พ.ศ[.] [y]", // date_long
+        "[d]/[M]/[yy]", // date_short
+    },
+    { // date_buddhist_months
+        "", // wide_1
+        "", // wide_10
+        "", // wide_11
+        "", // wide_12
+        "", // wide_2
+        "", // wide_3
+        "", // wide_4
+        "", // wide_5
+        "", // wide_6
+        "", // wide_7
+        "", // wide_8
+        "", // wide_9
+    },
+    { // date_calendar
+        "buddhist gregorian", // preferred
+    },
+    { // date_chinese
+        "[y|digits]年[MMMM][d|date.day]", // date_long
+    },
+    { // date_chinese_Sexagenary
+        "[U|date.sexagenary]年[MMMM][d|date.day]", // date_long
+    },
+    { // date_chinese_Sexagenary_months
+        "", // wide_1
+        "", // wide_10
+        "", // wide_11
+        "", // wide_12
+        "", // wide_13
+        "", // wide_14
+        "", // wide_15
+        "", // wide_16
+        "", // wide_17
+        "", // wide_18
+        "", // wide_19
+        "", // wide_2
+        "", // wide_20
+        "", // wide_21
+        "", // wide_22
+        "", // wide_23
+        "", // wide_24
+        "", // wide_3
+        "", // wide_4
+        "", // wide_5
+        "", // wide_6
+        "", // wide_7
+        "", // wide_8
+        "", // wide_9
+    },
+    { // date_chinese_months
+        "", // wide_1
+        "", // wide_10
+        "", // wide_11
+        "", // wide_12
+        "", // wide_13
+        "", // wide_14
+        "", // wide_15
+        "", // wide_16
+        "", // wide_17
+        "", // wide_18
+        "", // wide_19
+        "", // wide_2
+        "", // wide_20
+        "", // wide_21
+        "", // wide_22
+        "", // wide_23
+        "", // wide_24
+        "", // wide_3
+        "", // wide_4
+        "", // wide_5
+        "", // wide_6
+        "", // wide_7
+        "", // wide_8
+        "", // wide_9
+    },
+    { // date_coptic
+        "[d] [MMMM] [y]", // date_long
+        "", // date_short
+    },
+    { // date_coptic_months
+        "", // wide_1
+        "", // wide_10
+        "", // wide_11
+        "", // wide_12
+        "", // wide_13
+        "", // wide_2
+        "", // wide_3
+        "", // wide_4
+        "", // wide_5
+        "", // wide_6
+        "", // wide_7
+        "", // wide_8
+        "", // wide_9
+    },
+    { // date_ethiopic
+        "[d] [MMMM] [y]", // date_long
+    },
+    { // date_ethiopic_months
+        "", // wide_1
+        "", // wide_10
+        "", // wide_11
+        "", // wide_12
+        "", // wide_13
+        "", // wide_2
+        "", // wide_3
+        "", // wide_4
+        "", // wide_5
+        "", // wide_6
+        "", // wide_7
+        "", // wide_8
+        "", // wide_9
+    },
+    { // date_gregorian
+        "[MMMM] [d], [y]", // date_long
+        "[M]/[d]/[yy]", // date_short
+    },
+    { // date_gregorian_Genitive
+        "[d].[ ][MMMM] [y].", // date_long
+        "[d].[M].[yy].", // date_short
+    },
+    { // date_gregorian_Genitive_licr_months
+        "\\cyrje\\cyra\\cyrn\\cyru\\cyra\\cyrr\\cyra", // wide_1
+        "\\cyro\\cyrk\\cyrt\\cyro\\cyrb\\cyrr\\cyra", // wide_10
+        "\\cyrn\\cyro\\cyrv\\cyre\\cyrm\\cyrb\\cyrr\\cyra", // wide_11
+        "\\cyrd\\cyre\\cyrc\\cyre\\cyrm\\cyrb\\cyrr\\cyra", // wide_12
+        "\\cyrf\\cyre\\cyrb\\cyrr\\cyru\\cyra\\cyrr\\cyra", // wide_2
+        "\\cyrm\\cyra\\cyrr\\cyrt\\cyra", // wide_3
+        "\\cyra\\cyrp\\cyrr\\cyri\\cyrl\\cyra", // wide_4
+        "\\cyrm\\cyra\\cyrje\\cyra", // wide_5
+        "\\cyrje\\cyru\\cyrn\\cyra", // wide_6
+        "\\cyrje\\cyru\\cyrl\\cyra", // wide_7
+        "\\cyra\\cyrv\\cyrg\\cyru\\cyrs\\cyrt\\cyra", // wide_8
+        "\\cyrs\\cyre\\cyrp\\cyrt\\cyre\\cyrm\\cyrb\\cyrr\\cyra", // wide_9
+    },
+    { // date_gregorian_Genitive_months
+        "", // wide_1
+        "", // wide_10
+        "", // wide_11
+        "", // wide_12
+        "", // wide_2
+        "", // wide_3
+        "", // wide_4
+        "", // wide_5
+        "", // wide_6
+        "", // wide_7
+        "", // wide_8
+        "", // wide_9
+    },
+    { // date_gregorian_Izafa
+        "[d]’ê[ ][MMMM]ê[ ][y]", // date_long
+        "[y]-[MM]-[dd]", // date_short
+    },
+    { // date_gregorian_Izafa_licr
+        "[d]'\\^e[ ][MMMM]\\^e[ ][y]", // date_long
+    },
+    { // date_gregorian_Izafa_licr_months
+        "\\c Cileya Pa\\c s\\^\\i n", // wide_1
+        "\\c Ciriya P\\^e\\c s\\^\\i n", // wide_10
+        "\\c Ciriya Pa\\c s\\^\\i n", // wide_11
+        "\\c Cileya P\\^e\\c s\\^\\i n", // wide_12
+        "Sibat", // wide_2
+        "Adar", // wide_3
+        "N\\^\\i san", // wide_4
+        "Gulan", // wide_5
+        "Hez\\^\\i ran", // wide_6
+        "T\\^\\i rmeh", // wide_7
+        "Tebax", // wide_8
+        "\\^Ilon", // wide_9
+    },
+    { // date_gregorian_Izafa_months
+        "ileya Paşîn", // wide_1
+        "iriya Pêşîn", // wide_10
+        "iriya Paşîn", // wide_11
+        "ileya Pêşîn", // wide_12
+        "Sibat", // wide_2
+        "Adar", // wide_3
+        "Nîsan", // wide_4
+        "Gulan", // wide_5
+        "Hezîran", // wide_6
+        "Tîrmeh", // wide_7
+        "Tebax", // wide_8
+        "lon", // wide_9
+    },
+    { // date_gregorian_Nominative
+        "[d] [MMMM] [y]", // date_long
+        "[dd]/[MM]/[y]", // date_short
+    },
+    { // date_gregorian_Nominative_licr_months
+        "an D\\`amhair", // wide_10
+        "an D\\`ubhlachd", // wide_12
+        "am M\\`art", // wide_3
+        "an C\\`eitean", // wide_5
+        "an t-\\`Ogmhios", // wide_6
+        "an L\\`unastal", // wide_8
+    },
+    { // date_gregorian_Nominative_months
+        "am Faoilleach", // wide_1
+        "an Dàmhair", // wide_10
+        "an t-Samhain", // wide_11
+        "an Dùbhlachd", // wide_12
+        "an Gearran", // wide_2
+        "am Màrt", // wide_3
+        "an Giblean", // wide_4
+        "an Cèitean", // wide_5
+        "an t-Ògmhios", // wide_6
+        "an t-Iuchar", // wide_7
+        "an Lùnastal", // wide_8
+        "an t-Sultain", // wide_9
+    },
+    { // date_gregorian_Superessive
+        "[y].[ ][MMMM] [d|date.onday]", // date_long
+    },
+    { // date_gregorian_Superessive_licr
+        "[y].[ ][MMMM] [d|date.onday]", // date_long
+    },
+    { // date_gregorian_Superessive_licr_months
+        "janu\\'ar", // wide_1
+        "okt\\'ober", // wide_10
+        "november", // wide_11
+        "december", // wide_12
+        "febru\\'ar", // wide_2
+        "m\\'arcius", // wide_3
+        "\\'aprilis", // wide_4
+        "m\\'ajus", // wide_5
+        "j\\'unius", // wide_6
+        "j\\'ulius", // wide_7
+        "augusztus", // wide_8
+        "szeptember", // wide_9
+    },
+    { // date_gregorian_Superessive_months
+        "január", // wide_1
+        "október", // wide_10
+        "november", // wide_11
+        "december", // wide_12
+        "február", // wide_2
+        "március", // wide_3
+        "prilis", // wide_4
+        "május", // wide_5
+        "június", // wide_6
+        "július", // wide_7
+        "augusztus", // wide_8
+        "szeptember", // wide_9
+    },
+    { // date_gregorian_dayPeriods_abbreviated
+        "AM", // am
+        "PM", // pm
+    },
+    { // date_gregorian_dayPeriods_narrow
+        "a", // am
+        "p", // pm
+    },
+    { // date_gregorian_dayPeriods_wide
+        "AM", // am
+        "PM", // pm
+    },
+    { // date_gregorian_days_abbreviated
+        "Hla", // fri
+        "Mso", // mon
+        "Mgq", // sat
+        "Son", // sun
+        "Sin", // thu
+        "Bil", // tue
+        "Tha", // wed
+    },
+    { // date_gregorian_days_narrow
+        "H", // fri
+        "M", // mon
+        "M", // sat
+        "S", // sun
+        "S", // thu
+        "B", // tue
+        "T", // wed
+    },
+    { // date_gregorian_days_wide
+        "ULwesihlanu", // fri
+        "UMsombuluko", // mon
+        "UMgqibelo", // sat
+        "ISonto", // sun
+        "ULwesine", // thu
+        "ULwesibili", // tue
+        "ULwesithathu", // wed
+    },
+    { // date_gregorian_licr
+        "[d].[ ][MMMM] [y]", // date_long
+        "[dd]/[MM]/[yy]", // date_short
+    },
+    { // date_gregorian_licr_month
+        "\\accpsili\\textIota\\textalpha\\textnu\\textomicron\\textupsilon\\textalpha\\textrho\\acctonos\\textiota\\textomicron\\textupsilon", // wide_1
+        "\\accpsili\\textOmicron\\textkappa\\texttau\\textomega\\textbeta\\textrho\\acctonos\\textiota\\textomicron\\textupsilon", // wide_10
+        "\\textNu\\textomicron\\textepsilon\\textmu\\textbeta\\textrho\\acctonos\\textiota\\textomicron\\textupsilon", // wide_11
+        "\\textDelta\\textepsilon\\textkappa\\textepsilon\\textmu\\textbeta\\textrho\\acctonos\\textiota\\textomicron\\textupsilon", // wide_12
+        "\\textPhi\\textepsilon\\textbeta\\textrho\\textomicron\\textupsilon\\textalpha\\textrho\\acctonos\\textiota\\textomicron\\textupsilon", // wide_2
+        "\\textMu\\textalpha\\textrho\\texttau\\acctonos\\textiota\\textomicron\\textupsilon", // wide_3
+        "\\accpsili\\textAlpha\\textpi\\textrho\\textiota\\textlambda\\acctonos\\textiota\\textomicron\\textupsilon", // wide_4
+        "\\textMu\\textalpha\\accdialytikatonos\\textiota\\textomicron\\textupsilon", // wide_5
+        "\\accpsili\\textIota\\textomicron\\textupsilon\\textnu\\acctonos\\textiota\\textomicron\\textupsilon", // wide_6
+        "\\accpsili\\textIota\\textomicron\\textupsilon\\textlambda\\acctonos\\textiota\\textomicron\\textupsilon", // wide_7
+        "\\textAlpha\\accpsili\\textupsilon\\textgamma\\textomicron\\acctonos\\textupsilon\\textsigma\\texttau\\textomicron\\textupsilon", // wide_8
+        "\\textSigma\\textepsilon\\textpi\\texttau\\textepsilon\\textmu\\textbeta\\textrho\\acctonos\\textiota\\textomicron\\textupsilon", // wide_9
+    },
+    { // date_gregorian_licr_months
+        "UMasingana", // wide_1
+        "Okthoba", // wide_10
+        "Novemba", // wide_11
+        "Disemba", // wide_12
+        "Februwari", // wide_2
+        "Mashi", // wide_3
+        "Ephreli", // wide_4
+        "Meyi", // wide_5
+        "Juni", // wide_6
+        "Julayi", // wide_7
+        "Agasti", // wide_8
+        "Septhemba", // wide_9
+    },
+    { // date_gregorian_months
+        "J", // narrow_1
+        "O", // narrow_10
+        "N", // narrow_11
+        "D", // narrow_12
+        "F", // narrow_2
+        "M", // narrow_3
+        "E", // narrow_4
+        "M", // narrow_5
+        "J", // narrow_6
+        "J", // narrow_7
+        "A", // narrow_8
+        "S", // narrow_9
+        "UMasingana", // wide_1
+        "Okthoba", // wide_10
+        "Novemba", // wide_11
+        "Disemba", // wide_12
+        "Februwari", // wide_2
+        "Mashi", // wide_3
+        "Ephreli", // wide_4
+        "Meyi", // wide_5
+        "Juni", // wide_6
+        "Julayi", // wide_7
+        "Agasti", // wide_8
+        "Septhemba", // wide_9
+    },
+    { // date_hebrew
+        "[d] ב[MMMM] [y]", // date_long
+    },
+    { // date_hebrew_months
+        "", // narrow_1
+        "", // narrow_10
+        "", // narrow_11
+        "", // narrow_12
+        "", // narrow_13
+        "", // narrow_2
+        "", // narrow_3
+        "", // narrow_4
+        "", // narrow_5
+        "", // narrow_6
+        "", // narrow_7
+        "", // narrow_8
+        "", // narrow_9
+        "", // wide_1
+        "", // wide_10
+        "", // wide_11
+        "", // wide_12
+        "", // wide_13
+        "", // wide_2
+        "", // wide_3
+        "", // wide_4
+        "", // wide_5
+        "", // wide_6
+        "", // wide_7
+        "", // wide_8
+        "", // wide_9
+    },
+    { // date_indian
+        "[d] [MMMM] [y]", // date_long
+    },
+    { // date_indian_months
+        "1", // narrow_1
+        "10", // narrow_10
+        "11", // narrow_11
+        "12", // narrow_12
+        "2", // narrow_2
+        "3", // narrow_3
+        "4", // narrow_4
+        "5", // narrow_5
+        "6", // narrow_6
+        "7", // narrow_7
+        "8", // narrow_8
+        "9", // narrow_9
+        "", // wide_1
+        "", // wide_10
+        "", // wide_11
+        "", // wide_12
+        "", // wide_2
+        "", // wide_3
+        "", // wide_4
+        "", // wide_5
+        "", // wide_6
+        "", // wide_7
+        "", // wide_8
+        "", // wide_9
+    },
+    { // date_islamic
+        "[d] [MMMM] [y]", // date_long
+    },
+    { // date_islamic_months
+        "", // narrow_1
+        "", // narrow_10
+        "", // narrow_11
+        "", // narrow_12
+        "", // narrow_2
+        "", // narrow_3
+        "", // narrow_4
+        "", // narrow_5
+        "", // narrow_6
+        "", // narrow_7
+        "", // narrow_8
+        "", // narrow_9
+        "", // wide_1
+        "", // wide_10
+        "", // wide_11
+        "", // wide_12
+        "", // wide_2
+        "", // wide_3
+        "", // wide_4
+        "", // wide_5
+        "", // wide_6
+        "", // wide_7
+        "", // wide_8
+        "", // wide_9
+    },
+    { // date_kurdish
+        "[d]ی [MMMM]ی [y]", // date_long
+    },
+    { // date_kurdish_months
+        "", // narrow_1
+        "", // narrow_10
+        "", // narrow_11
+        "", // narrow_12
+        "", // narrow_2
+        "", // narrow_3
+        "", // narrow_4
+        "", // narrow_5
+        "", // narrow_6
+        "", // narrow_7
+        "", // narrow_8
+        "", // narrow_9
+        "", // wide_1
+        "", // wide_10
+        "", // wide_11
+        "", // wide_12
+        "", // wide_2
+        "", // wide_3
+        "", // wide_4
+        "", // wide_5
+        "", // wide_6
+        "", // wide_7
+        "", // wide_8
+        "", // wide_9
+    },
+    { // date_persian
+        "[d] [MMMM] [y]", // date_long
+    },
+    { // date_persian_months
+        "", // narrow_1
+        "", // narrow_10
+        "", // narrow_11
+        "", // narrow_12
+        "", // narrow_2
+        "", // narrow_3
+        "", // narrow_4
+        "", // narrow_5
+        "", // narrow_6
+        "", // narrow_7
+        "", // narrow_8
+        "", // narrow_9
+        "", // wide_1
+        "", // wide_10
+        "", // wide_11
+        "", // wide_12
+        "", // wide_2
+        "", // wide_3
+        "", // wide_4
+        "", // wide_5
+        "", // wide_6
+        "", // wide_7
+        "", // wide_8
+        "", // wide_9
+    },
+    { // general
+        "performance", // desiredgov
+        "1", // disable_splitlock
+        "powersave", // igpu_desiredgov
+        "0.3", // igpu_power_threshold
+        "1", // inhibit_screensaver
+        "0", // ioprio
+        "5", // reaper_freq
+        "0", // renice
+        "off", // softrealtime
+    },
+    { // identification
+        "utf8", // charset
+        "2020-10-11", // date
+        "no", // derivate
+        "T1 OT1 LY1", // encodings
+        "1", // level
+        "1.3", // version
+        "This is a bare minimum locale for 'waray'.", // warning
+    },
+    { // identification_extension_x_tag
+        "medieval", // bcp47
+    },
+    { // identification_language_tag
+        "zu", // bcp47
+    },
+    { // identification_name
+        "zulu", // babel
+        "Zulu", // english
+        "isiZulu", // local
+        "Chinese Simplified", // opentype
+        "vietnamese", // polyglossia
+    },
+    { // identification_name_babel
+        "swissgerman", // C
+    },
+    { // identification_name_polyglossia
+        "latin", // language
+        "medieval", // variant
+    },
+    { // identification_polyglossia
+        "new", // spelling
+        "portuguese", // variant
+    },
+    { // identification_region
+        "Macao SAR China", // english
+        "", // local
+    },
+    { // identification_region_tag
+        "MO", // bcp47
+    },
+    { // identification_require
+        "chinese", // babel
+    },
+    { // identification_script
+        "Latin", // name
+    },
+    { // identification_script_name
+        "CJK", // opentype
+    },
+    { // identification_script_tag
+        "Latn", // bcp47
+        "latn", // opentype
+    },
+    { // identification_tag
+        "zu", // bcp47
+        "ZUL", // opentype
+    },
+    { // identification_tag_bcp47
+        "zu-Latn-ZA", // likely
+    },
+    { // identification_variant_tag
+        "ijekavsk", // bcp47
+    },
+    { // mypy
+        "False", // check_untyped_defs
+        "return", // disable_error_code
+        "False", // disallow_any_generics
+        "False", // disallow_incomplete_defs
+        "False", // disallow_untyped_calls
+        "False", // disallow_untyped_defs
+        "ignore-without-code", // enable_error_code
+        "True", // explicit_package_bases
+        "Lib/test/libregrtest", // files
+        "linux", // platform
+        "True", // pretty
+        "3.12", // python_version
+        "True", // strict
+        "False", // warn_return_any
+    },
+    { // mypy_Lib_test_libregrtest_main_Lib_test_libregrtest_run_workers_
+        "False", // strict_optional
+    },
+    { // mypy__abc__opcode__overlapped__testcapi__testinternalcapi_test_
+        "True", // ignore_missing_imports
+    },
+    { // numbers
+        ".", // decimal
+        "latn", // defaultNumberingSystem
+        "E", // exponential
+        ",", // group
+        "", // infinity
+        ";", // list
+        "1", // minimumGroupingDigits
+        "-", // minusSign
+        "NaN", // nan
+        "", // perMille
+        "%", // percentSign
+        "+", // plusSign
+        "", // superscriptingExponent
+    },
+    { // numbers_digits
+        "", // native
+    },
+    { // pytest
+        "Imiphumela yemizuzu", // AgendaDlgButton1
+        "Imizuzu yokuhlaziya", // AgendaDlgButton2
+        "Uhlobo lomzuzu", // AgendaDlgFrame
+        "Uqwembe lwemizuzu", // AgendaDlgName
+        "Ukhetho kumele kuqinisekwe ngalo.", // AgendaDlgNoCancel
+        "< ~Emuva", // BackButton
+        "~Guqula", // BeginButton
+        "I-Escudo yesiPutukezi", // CURRENCIES_0
+        "I-Guilder yesiDashi", // CURRENCIES_1
+        "I-Mark yase-Finland", // CURRENCIES_10
+        "I-Drachma yaseGreki", // CURRENCIES_11
+        "Slovenian Tolar", // CURRENCIES_12
+        "Cypriot Pound", // CURRENCIES_13
+        "Maltese Lira", // CURRENCIES_14
+        "Slovak Koruna", // CURRENCIES_15
+        "Estonian Kroon", // CURRENCIES_16
+        "Latvian Lats", // CURRENCIES_17
+        "Lithuanian Litas", // CURRENCIES_18
+        "Croatian Kuna", // CURRENCIES_19
+        "I-Franc yase-Paris", // CURRENCIES_2
+        "I-Peseta yase-Spain", // CURRENCIES_3
+        "I-Lira yaseNtaliyane", // CURRENCIES_4
+        "I-Mark yaseJalimane", // CURRENCIES_5
+        "I-Franc yase-Belgium", // CURRENCIES_6
+        "I-Punt yesi-Ireland", // CURRENCIES_7
+        "I-Franc yase-Luxembourg", // CURRENCIES_8
+        "Usheleni wase-Australia", // CURRENCIES_9
+        "~Nqamula", // CancelButton
+        "~Vala", // CloseButton
+        "Ufuna ngempela ukuqamula ukuguqula ngalo mzuzu?", // ConvertError1
+        "Umsizi Wokuchitha", // ConvertError2
+        "Umamukeli", // CorrespondenceDialog_0
+        "Umamukeli oyedwa", // CorrespondenceDialog_1
+        "Abamukeli abaningana (isiqu solwazi sekheli)", // CorrespondenceDialog_2
+        "Ukusetshenziswa kwalolu qwembe", // CorrespondenceDialog_3
+        "Cofa umbambi wendawo futhi ubhale ngaphezulu", // CorrespondenceFields_0
+        "Inkampani", // CorrespondenceFields_1
+        "Isimo", // CorrespondenceFields_10
+        "Isakhiwo sekheli", // CorrespondenceFields_11
+        "Amagama afingqiwe", // CorrespondenceFields_12
+        "Isibingelelo", // CorrespondenceFields_13
+        "Ucingo Lwasekhaya", // CorrespondenceFields_14
+        "Ucingo Lomsebenzi", // CorrespondenceFields_15
+        "Isikhahlamezi", // CorrespondenceFields_16
+        "Email", // CorrespondenceFields_17
+        "URL", // CorrespondenceFields_18
+        "Notes", // CorrespondenceFields_19
+        "Umkhakha", // CorrespondenceFields_2
+        "Enye inkundla 1", // CorrespondenceFields_20
+        "Enye inkundla 2", // CorrespondenceFields_21
+        "Enye inkundla 3", // CorrespondenceFields_22
+        "Enye inkundla 4", // CorrespondenceFields_23
+        "ID", // CorrespondenceFields_24
+        "Isimo", // CorrespondenceFields_25
+        "Ucingo lwasehhovisi", // CorrespondenceFields_26
+        "Pager", // CorrespondenceFields_27
+        "Umakhala ekhukhwini", // CorrespondenceFields_28
+        "Olunye Ucingo", // CorrespondenceFields_29
+        "First Name", // CorrespondenceFields_3
+        "I-URL yekhalenda", // CorrespondenceFields_30
+        "Mema", // CorrespondenceFields_31
+        "Last Name", // CorrespondenceFields_4
+        "Umgwaqo", // CorrespondenceFields_5
+        "Izwe", // CorrespondenceFields_6
+        "Ikhodi yokuposa", // CorrespondenceFields_7
+        "Idolobha", // CorrespondenceFields_8
+        "Isihloko", // CorrespondenceFields_9
+        "Iphutha lenzekile.", // CorrespondenceMsgError
+        "Uphawu lwencwadi 'Umamukeli' alukho.", // CorrespondenceNoTextmark_0
+        "Izinkundla zezincwadi zefomu angeke zahlanganiswa.", // CorrespondenceNoTextmark_1
+        "Ushicilelo '<1>' aluvulekanga.", // CouldNotopenDocument
+        "Ushicilelo '<1>' alugcinekanga.", // CouldNotsaveDocument
+        "Dala ifayela lenqubo", // CreateLogfile
+        "Umguquli Woshicilelo", // DialogTitle
+        "Ifayela '<1>' selivele likhona.<CR>Ufuna ukubhala ngaphezulu kwalo?", // FileExists
+        "Izingqwembe ezihwetshelwe ngaphakathi", // GroupnameDefault
+        "~Usizo", // HelpButton
+        "Ifayela lenqubo lizodalwa ohlwini lwakho lwamafayela lokusebenza", // LogfileHelpText
+        "<COUNT> ushicilelo oluguquliqw", // LogfileSummary
+        "~Qeda", // MESSAGES_0
+        "Khetha uhlu lwamafayela", // MESSAGES_1
+        "Isexwayiso!", // MESSAGES_10
+        "Ukuvikeleka kwamaphepha angeke kugudluzwe.", // MESSAGES_11
+        "Iphepha angeka layekwa ukuvikelwa", // MESSAGES_12
+        "The Wizard cannot edit this document as cell formats cannot be modified in documents containing protected spreadsheets.", // MESSAGES_13
+        "Siza wazi ukuthi Umguquli we-Yuro, kungenjalo, angeke akwazi ukulungisa lolu shicilelo!", // MESSAGES_14
+        "Khetha izimali okumele ziguqulwe kuqala!", // MESSAGES_15
+        "Igama lokudlula:", // MESSAGES_16
+        "Kulungile", // MESSAGES_17
+        "Nqamula", // MESSAGES_18
+        "Siza ukhethe ushicilelo lwe-%PRODUCTNAME Calc oluzolungiswa!", // MESSAGES_19
+        "Khetha ifayela", // MESSAGES_2
+        "'<1>' ayilona uhlu lwamafayela!", // MESSAGES_20
+        "Ushicilelo luyafundwa-kuphela!", // MESSAGES_21
+        "Ifayela '<1>' selivele likhona.<CR>Ufuna ukubhala ngaphezulu kwalo?", // MESSAGES_22
+        "Ufuna ngempela ukuqamula ukuguqula ngalo mzuzu?", // MESSAGES_23
+        "Umsizi Wokuchitha", // MESSAGES_24
+        "Khetha uhlu lwamafayela oluqondiwe", // MESSAGES_3
+        "non-existent", // MESSAGES_4
+        "Umguquli we-Euro", // MESSAGES_5
+        "Kumele amakhasi okubala avikelwe ayeke ukuvikelwa okwesikhashana?", // MESSAGES_6
+        "Faka igama lokudlula lokuyeka ukuvikela itafula %1TableName%1", // MESSAGES_7
+        "Igama lokudlula elingalungile!", // MESSAGES_8
+        "Iphepha elivikelekile", // MESSAGES_9
+        "Microsoft Office", // MSContainerName
+        "Ushicilelo lwe-Word", // MSDocumentCheckbox_1_
+        "Ushicilelo lwe-Excel", // MSDocumentCheckbox_2_
+        "PowerPoint/Publisher documents", // MSDocumentCheckbox_3_
+        "Izingwembe ze-Word", // MSTemplateCheckbox_1_
+        "Izingqwembe ze-Excel", // MSTemplateCheckbox_2_
+        "Izingqwembe ze-PowerPoint", // MSTemplateCheckbox_3_
+        "Uhlu lwamafayela alukho", // MorePathsError3
+        "Uhlu lwamafayela i-'%1' alukho.", // MsgDirNotThere
+        "Ne~xt >", // NextButton
+        "The '%1' directory cannot be created:", // NoDirCreation
+        "Ufuna ukubhala ngaphezulu ushicilelo ngaphandle kokubuzwa?", // OverwriteallFiles
+        "Khetha uhlu lwamafayela", // PathDialogMessage
+        "Litholakele:", // ProgressFound
+        "Ushicilelo", // ProgressMoreDocs
+        "Izigqwembe", // ProgressMoreTemplates
+        "Inqubo", // ProgressPage1
+        "Ivundulula ushicilelo oluhambelanayo:", // ProgressPage2
+        "Iguqula ushicilelo", // ProgressPage3
+        "\"%1 found", // ProgressPage5
+        "Ufuna ukuludala manje?", // QueryfornewCreation
+        "Ushicilelo '%1' aludalekanga.<BR>Kungenzeka ukuthi asikho isikhala esisele kwidiski yakho.", // RID_COMMON_0
+        "The text document could not be created.<BR>Please check if the module '%PRODUCTNAME Writer' is installed.", // RID_COMMON_1
+        "Cha", // RID_COMMON_10
+        "Nqamula", // RID_COMMON_11
+        "~Qeda", // RID_COMMON_12
+        "< ~Emuva", // RID_COMMON_13
+        "~Okulandelayo >", // RID_COMMON_14
+        "~Usizo", // RID_COMMON_15
+        "Izinyathelo", // RID_COMMON_16
+        "Vala", // RID_COMMON_17
+        "Kulungile", // RID_COMMON_18
+        "Leli fayili selikhona kakade. Ingabe ufuna ukubhala phezu kwalo?", // RID_COMMON_19
+        "The spreadsheet could not be created.<BR>Please check if the module '%PRODUCTNAME Calc' is installed.", // RID_COMMON_2
+        "Umklamo owakhiwe ngokusebenzisa <wizard_name> mhlaka <current_date>.", // RID_COMMON_20
+        "The wizard could not be run, because important files were not found.\\nUnder 'Tools - Options - %PRODUCTNAME - Paths' click the 'Default' button to reset the paths to the original default settings.\\nThen run the wizard again.", // RID_COMMON_21
+        "The presentation could not be created.<BR>Please check if the module '%PRODUCTNAME Impress' is installed.", // RID_COMMON_3
+        "The drawing could not be created.<BR>Please check if the module '%PRODUCTNAME Draw' is installed.", // RID_COMMON_4
+        "The formula could not be created.<BR>Please check if the module '%PRODUCTNAME Math' is installed.", // RID_COMMON_5
+        "Amafayela adingekayo awatholakali.<BR>Siza uqale Umiso lwaphezulu lwe-%PRODUCTNAME ebese ukhetha 'Lungisa'.", // RID_COMMON_6
+        "Ifayela '<PATH>' selikhona.<BR><BR>Ufuna ukubhala ngaphezulu kwalo?", // RID_COMMON_7
+        "Yebo", // RID_COMMON_8
+        "Yebo kukho konke", // RID_COMMON_9
+        "~Dala", // RID_DB_COMMON_0
+        "~Nqamula", // RID_DB_COMMON_1
+        "This title already exists in the database. Please enter another name.", // RID_DB_COMMON_10
+        "The title must not contain any spaces or special characters.", // RID_DB_COMMON_11
+        "The database service (com.sun.data.DatabaseEngine) could not be instantiated.", // RID_DB_COMMON_12
+        "The selected table or query could not be opened.", // RID_DB_COMMON_13
+        "Uxhumano esiqwini solwazi alusungulekanga.", // RID_DB_COMMON_14
+        "< ~Emuva", // RID_DB_COMMON_2
+        "~Usizo", // RID_DB_COMMON_20
+        "~Misa", // RID_DB_COMMON_21
+        "~Okulandelayo >", // RID_DB_COMMON_3
+        "Ushicilelo alugcinekanga.", // RID_DB_COMMON_30
+        "Ukuphuma kumsizi", // RID_DB_COMMON_33
+        "Ixhuma kwimvelaphi yolwazi...", // RID_DB_COMMON_34
+        "Uxhumano lwemvelaphi yolwazi alusungulwanga.", // RID_DB_COMMON_35
+        "Indlela yefayela engenisiwe ayisebenzi.", // RID_DB_COMMON_36
+        "Siza ukhethe imvelaphi yolwazi", // RID_DB_COMMON_37
+        "Siza ukhethe itafula noma umbuzo", // RID_DB_COMMON_38
+        "Yongeza inkundla", // RID_DB_COMMON_39
+        "Isi~qu solwazi", // RID_DB_COMMON_4
+        "Gudluza inkundla", // RID_DB_COMMON_40
+        "Yongeza zonke izinkundla", // RID_DB_COMMON_41
+        "Gudluza zonke izinkundla", // RID_DB_COMMON_42
+        "Khuphula isikhala siye phezulu", // RID_DB_COMMON_43
+        "Khuphula isikhala siye phansi", // RID_DB_COMMON_44
+        "Amagama ezikhala e- '%NAME' awatholakalanga.", // RID_DB_COMMON_45
+        "~Igama letafula", // RID_DB_COMMON_5
+        "Kwenzeke iphutha ekusebenzeni komsizi. Umsizi uzomiswa.", // RID_DB_COMMON_6
+        "No database has been installed. At least one database is required before the wizard for forms can be started.", // RID_DB_COMMON_8
+        "The database does not contain any tables.", // RID_DB_COMMON_9
+        "Umsizi Wamafomu", // RID_FORM_0
+        "Izikhala ~kwi fomu", // RID_FORM_1
+        "~Izikhala ezikhona", // RID_FORM_12
+        "Izinkundla kwifomu", // RID_FORM_13
+        "The join '<FIELDNAME1>' and '<FIELDNAME2>' has been selected twice.\\nBut joins may only be used once.", // RID_FORM_19
+        "Binary fields are always listed and selectable from the left list.\\nIf possible, they are interpreted as images.", // RID_FORM_2
+        "~Isikhala sefomana esihlanganiswe kuqala", // RID_FORM_20
+        "~Isikhala sefomana esihlanganiswe okwesibili", // RID_FORM_21
+        "~Isikhala sefomana esihlanganiswe okwesithathu", // RID_FORM_22
+        "~Isikhala sefomana esihlanganiswe okwesine", // RID_FORM_23
+        "I~sikhala sefomu eliyinhloko esihlanganiswe kuqala", // RID_FORM_24
+        "I~sikhala sefomu eliyinhloko esihlanganiswe okwesibili", // RID_FORM_25
+        "I~sikhala sefomu eliyinhloko esihlanganiswe okwesithathu", // RID_FORM_26
+        "I~sikhala sefomu eliyinhloko esihlanganiswe okwesine", // RID_FORM_27
+        "Umngcele wenkundla", // RID_FORM_28
+        "Akukho mngcele", // RID_FORM_29
+        "A subform is a form that is inserted in another form.\\nUse subforms to show data from tables or queries with a one-to-many relationship.", // RID_FORM_3
+        "Ukubukeka kwe-3D", // RID_FORM_30
+        "Kuyisicaba", // RID_FORM_31
+        "Ukubekwa kwamalebula", // RID_FORM_32
+        "Qondanisa ngakwesokunxele", // RID_FORM_33
+        "Qondanisa ngakwesokudla", // RID_FORM_34
+        "Uhlelo lwezinkundla ze-DB", // RID_FORM_35
+        "Okungumfantu - Amalebula ngakwesokunxele", // RID_FORM_36
+        "Okungumfantu - Amalebula phezulu", // RID_FORM_37
+        "Ngamabhuloki - Amalebula ngakwesokunxele", // RID_FORM_38
+        "Ngamabhuloki - Amalebula ngaphezulu", // RID_FORM_39
+        "~Nezela ifomana", // RID_FORM_4
+        "Njengephepha lolwazi", // RID_FORM_40
+        "Ukuhlelwa kwefomu eliyinhloko", // RID_FORM_41
+        "Ukuhlelwa kwefomana", // RID_FORM_42
+        "Leli fomu lizosetshenziswa~ukuaka i-data entsha kuphela.", // RID_FORM_44
+        "Existing data will not be displayed", // RID_FORM_45
+        "Le~li fomu lizobonisa yonke i-data", // RID_FORM_46
+        "Ungavumeli~ukulungiswa kwe-data ekhona", // RID_FORM_47
+        "Ungavumeli~ukususwa kwe-data ekhona", // RID_FORM_48
+        "Ungavumeli~ukwenezelwa kwe-data entsha", // RID_FORM_49
+        "~Ifomana esekelwe ebudlelwaneni obukhona", // RID_FORM_5
+        "Igama la~leli fomu", // RID_FORM_50
+        "Ufuna ukuqhubeka emva kokuba uqambe ifomu?", // RID_FORM_51
+        "~Sebenza ngefomu", // RID_FORM_52
+        "~Lungisa ifomu", // RID_FORM_53
+        "~Izitayela zekhasi", // RID_FORM_55
+        "Amatafula noma imibuzo", // RID_FORM_6
+        "Ifomana esekelwe~ekukhethweni kwezikhala ngesandla", // RID_FORM_7
+        "~Yibuphi ubudlelwane ofuna ukubunezela?", // RID_FORM_8
+        "Field selection", // RID_FORM_80
+        "Misa ifomana", // RID_FORM_81
+        "Yenezela izikhala zefomana", // RID_FORM_82
+        "Thola izikhala ezihlanganisiwe", // RID_FORM_83
+        "Lungisa Izinto zokuqondisa", // RID_FORM_84
+        "Khetha ukufakwa kwe-data", // RID_FORM_85
+        "Sebenzisa izitayela", // RID_FORM_86
+        "Khetha igama", // RID_FORM_87
+        "(Usuku)", // RID_FORM_88
+        "(Isikhathi)", // RID_FORM_89
+        "Izikhala ze~fomana", // RID_FORM_9
+        "Khetha izikhala zefomu lakho", // RID_FORM_90
+        "Nquma ukuthi uyafuna yini ukufaka ifomana", // RID_FORM_91
+        "Khetha izikhala zefomana lakho", // RID_FORM_92
+        "Khetha amajoyini phakathi kwamafomu akho", // RID_FORM_93
+        "Lungisa izinto zokuqondisa ifomu lakho", // RID_FORM_94
+        "Khetha indlela yokufakwa kwe-data", // RID_FORM_95
+        "Sebenzisa isitayela sefomu lakho", // RID_FORM_96
+        "Khetha igama lefomu lakho", // RID_FORM_97
+        "A form with the name '%FORMNAME' already exists.\\nChoose another name.", // RID_FORM_98
+        "Query Wizard", // RID_QUERY_0
+        "Umbuzo", // RID_QUERY_1
+        "~Fanisa noma yikuphi kulokhu okulandelayo", // RID_QUERY_10
+        "~Umbuzo obanzi (Uveza yonke imininingwane yombuzo.)", // RID_QUERY_11
+        "~Umbuzo ofingqiwe (Uveza imiphumela yemisebenzi isiyonke kuphela.)", // RID_QUERY_12
+        "Imisebenzi isiyonke", // RID_QUERY_16
+        "Izinkundla", // RID_QUERY_17
+        "Qo~qa nge", // RID_QUERY_18
+        "Field", // RID_QUERY_19
+        "Query Wizard", // RID_QUERY_2
+        "Elinye igama", // RID_QUERY_20
+        "Table:", // RID_QUERY_21
+        "Query:", // RID_QUERY_22
+        "Isimo", // RID_QUERY_24
+        "Inani", // RID_QUERY_25
+        "kulingana no", // RID_QUERY_26
+        "akulingani no", // RID_QUERY_27
+        "kuncane kuno", // RID_QUERY_28
+        "kukhulu kuno", // RID_QUERY_29
+        "~Amatafula", // RID_QUERY_3
+        "is equal or less than", // RID_QUERY_30
+        "kulingana noma kungaphezulu kuka", // RID_QUERY_31
+        "njenge", // RID_QUERY_32
+        "not like", // RID_QUERY_33
+        "is null", // RID_QUERY_34
+        "is not null", // RID_QUERY_35
+        "true", // RID_QUERY_36
+        "false", // RID_QUERY_37
+        "kanye", // RID_QUERY_38
+        "noma", // RID_QUERY_39
+        "A~vailable fields", // RID_QUERY_4
+        "thola isibalo sika", // RID_QUERY_40
+        "thola ukulingalingana kuka", // RID_QUERY_41
+        "thola okungokuncane ku", // RID_QUERY_42
+        "thola okungokukhulu ngokuphelele kuka", // RID_QUERY_43
+        "get the count of", // RID_QUERY_44
+        "(lutho)", // RID_QUERY_48
+        "Igama ~lombuzo", // RID_QUERY_5
+        "Fie~lds in the Query:", // RID_QUERY_50
+        "Sorting order:", // RID_QUERY_51
+        "Akuna zikhala zokuhlunga eziqokiwe.", // RID_QUERY_52
+        "Search conditions:", // RID_QUERY_53
+        "Akuna mibandela ebiqokiwe.", // RID_QUERY_54
+        "Aggregate functions:", // RID_QUERY_55
+        "Akunamisebenzi isiyonke eqokiwe.", // RID_QUERY_56
+        "Grouped by:", // RID_QUERY_57
+        "Akuna maqoqo aqokiwe.", // RID_QUERY_58
+        "Grouping conditions:", // RID_QUERY_59
+        "Bonisa ~Umbuzo", // RID_QUERY_6
+        "Akuna mibandela yokwenza amaqoqo eqokiwe.", // RID_QUERY_60
+        "~Lungisa Umbuzo", // RID_QUERY_7
+        "Khetha izikhala (izinhlu) zombuzo wakho", // RID_QUERY_70
+        "Khetha indlela yokuhlunga", // RID_QUERY_71
+        "Khetha imibandela yokufuna", // RID_QUERY_72
+        "Khetha uhlobo lombuzo", // RID_QUERY_73
+        "Khetha amaqoqo", // RID_QUERY_74
+        "Khetha imibandela yokwenza amaqoqo", // RID_QUERY_75
+        "Qoka amanye amagama uma ufisa", // RID_QUERY_76
+        "Hlola isimo sonke bese unquma ukuthi kuqhutshekwe kanjani", // RID_QUERY_77
+        "~Ufuna ukuqhubeka kanjani ngemva kokuqamba lombuzo?", // RID_QUERY_8
+        "Field selection", // RID_QUERY_80
+        "Indlela yokuhlunga", // RID_QUERY_81
+        "Imibandela yokufuna", // RID_QUERY_82
+        "Okubanzi noma okufingqiwe", // RID_QUERY_83
+        "Grouping", // RID_QUERY_84
+        "Imibandela yamaqoqo", // RID_QUERY_85
+        "Amanye amagama", // RID_QUERY_86
+        "Okufingqiwe", // RID_QUERY_87
+        "Isikhala esingakanikezwa umsebenzi ophelele kufanele sisetshenziswe kwi qoqo.", // RID_QUERY_88
+        "Lombandela '<FIELDNAME> <LOGICOPERATOR> <VALUE>' usukhethwe kabili. Umbandela ngamunye ungakhethwa kanye", // RID_QUERY_89
+        "Fanisa ~konke lokhu okulandelayo", // RID_QUERY_9
+        "Lomsebenzi ophelele <FUNCTION> usunikezwe kabili kuleli gama lesikhala '<NUMERICFIELD>'.", // RID_QUERY_90
+        ",", // RID_QUERY_91
+        "<FIELDTITLE> (<FIELDNAME>)", // RID_QUERY_92
+        "<FIELDNAME> (<SORTMODE>)", // RID_QUERY_93
+        "<FIELDNAME> <LOGICOPERATOR> <VALUE>", // RID_QUERY_94
+        "<CALCULATEDFUNCTION> <FIELDNAME>", // RID_QUERY_95
+        "<FIELDNAME> <LOGICOPERATOR> <VALUE>", // RID_QUERY_96
+        "Umsizi Wombiko", // RID_REPORT_0
+        "Default", // RID_REPORT_100
+        "Outline - Borders", // RID_REPORT_101
+        "Outline - Compact", // RID_REPORT_102
+        "Outline - Elegant", // RID_REPORT_103
+        "Outline - Highlighted", // RID_REPORT_104
+        "Outline - Modern", // RID_REPORT_105
+        "Outline - Red & Blue", // RID_REPORT_106
+        "Outline, indented - Borders", // RID_REPORT_107
+        "Outline, indented - Compact", // RID_REPORT_108
+        "Outline, indented - Elegant", // RID_REPORT_109
+        "Grouping", // RID_REPORT_11
+        "Outline, indented - Highlighted", // RID_REPORT_110
+        "Outline, indented - Modern", // RID_REPORT_111
+        "Outline, indented - Red & Blue", // RID_REPORT_112
+        "Bubbles", // RID_REPORT_113
+        "Cinema", // RID_REPORT_114
+        "Controlling", // RID_REPORT_115
+        "Default", // RID_REPORT_116
+        "Drafting", // RID_REPORT_117
+        "Ezezimali", // RID_REPORT_118
+        "Flipchart", // RID_REPORT_119
+        "Izindlela zokuhlunga", // RID_REPORT_12
+        "Formal with Company Logo", // RID_REPORT_120
+        "Generic", // RID_REPORT_121
+        "Worldmap", // RID_REPORT_122
+        "Khetha isakhiwo", // RID_REPORT_13
+        "Create report", // RID_REPORT_14
+        "Ukwendlaleka kolwazi", // RID_REPORT_15
+        "Ukwendlaleka kwezinhloko kanye nemibhalo osezansi", // RID_REPORT_16
+        "Izinkundla", // RID_REPORT_19
+        "~Hlela nge", // RID_REPORT_20
+        "Ngakho n~go", // RID_REPORT_21
+        "Isimo sekhasi", // RID_REPORT_22
+        "Iphepha elimile", // RID_REPORT_23
+        "Iphepha elivumile", // RID_REPORT_24
+        "Yiziphi izinkundla ofuna ukuba zibe kumbiko wakho?", // RID_REPORT_28
+        "Ufuna ukongeza amazinga okufaka eqenjini?", // RID_REPORT_29
+        "~Itafula", // RID_REPORT_3
+        "Ufuna ukuhlela ulwazi ngaziphi izindlela zezinkundla?", // RID_REPORT_30
+        "Ufuna ukuba umbiko wakho ubukeke kanjani?", // RID_REPORT_31
+        "Nquma ukuthi ufuna ukuqhubeka kanjani", // RID_REPORT_32
+        "Isihloko sombiko", // RID_REPORT_33
+        "Veza umbiko", // RID_REPORT_34
+        "Create report", // RID_REPORT_35
+        "Kuyenyuka", // RID_REPORT_36
+        "Kuyehlela", // RID_REPORT_37
+        "Imifa~ntu", // RID_REPORT_4
+        "~Umbiko ozenzekelayo", // RID_REPORT_40
+        "~Qamba umbiko manje", // RID_REPORT_41
+        "~Lungisa isakhiwo sombiko", // RID_REPORT_42
+        "Umbiko onganyakazi", // RID_REPORT_43
+        "Gcina njenge", // RID_REPORT_44
+        "Amaqembu", // RID_REPORT_50
+        "Ngakho n~go", // RID_REPORT_51
+        "~Bese ngo", // RID_REPORT_52
+        "~Kuyenyuka", // RID_REPORT_53
+        "~Kuyenyuka", // RID_REPORT_54
+        "~Kuyenyuka", // RID_REPORT_55
+        "De~scending", // RID_REPORT_56
+        "~Kuyehlela", // RID_REPORT_57
+        "De~scending", // RID_REPORT_58
+        "Inkundla ezingambili angeke zivezwe embikweni.", // RID_REPORT_60
+        "Itafula '<TABLENAME>' alikho.", // RID_REPORT_61
+        "Idala Umbiko...", // RID_REPORT_62
+        "Inombolo yemibiko efakiwe: <COUNT>", // RID_REPORT_63
+        "Isimo se-'<REPORTFORM>' asikho.", // RID_REPORT_64
+        "Umbuzo ngesitatimende <BR>'<STATEMENT>' <BR> awusetshenziswanga. <BR> Bheka imvelaphi yolwazi.", // RID_REPORT_65
+        "Lokhu kuphatha okulandelayo kufihliwe kwi-'<REPORTFORM>' akufundekanga: '<CONTROLNAME>'.", // RID_REPORT_66
+        "Ihweba ngaphakathi ulwazi...", // RID_REPORT_67
+        "Ukufaka amalebula ezikhaleni", // RID_REPORT_68
+        "Ufuna ukubhala kanjani izinkundla?", // RID_REPORT_69
+        "Umbiko_", // RID_REPORT_7
+        "Ilebula", // RID_REPORT_70
+        "Field", // RID_REPORT_71
+        "Kwenzeke iphutha kumsizi.<BR>Lomklamo '%PATH' ungase ube nephutha.<BR>Mhlawumbe lezi zigaba noma amathebula afunwayo akukho noma kukhona ngegamaokungelona.<BR>Bheka Usizo ukuze uthole ukwaziswa okwengeziwe.<BR>Ucelwa ukuba ukhetheomunye umklamo.", // RID_REPORT_72
+        "Kukhona inkundla yomsebenzisi engasebenzi etafuleni.", // RID_REPORT_73
+        "The sort criterion '<FIELDNAME>' was chosen twice. Each criterion can only be chosen once.", // RID_REPORT_74
+        "Yazi: Umbhalo owubulima uzoshintshwa ngulwazi olusuka kwisiqu solwazi uma umbiko usudaliwe.", // RID_REPORT_75
+        "Umbiko onje '%REPORTNAME' usukhona kakade emtatsheni we-data. Ucelwa ukuba unikeze elinye igama.", // RID_REPORT_76
+        "Ufuna ukuqhubeka emva kokuba uqambe umbiko?", // RID_REPORT_78
+        "Hlobo luni lombiko ofuna ukuluqamba?", // RID_REPORT_79
+        "- okungachaziwe -", // RID_REPORT_8
+        "Tabular", // RID_REPORT_80
+        "Columnar, single-column", // RID_REPORT_81
+        "Columnar, two columns", // RID_REPORT_82
+        "Columnar, three columns", // RID_REPORT_83
+        "In blocks, labels left", // RID_REPORT_84
+        "In blocks, labels above", // RID_REPORT_85
+        "Isihloko:", // RID_REPORT_86
+        "Umbhali:", // RID_REPORT_87
+        "Date:", // RID_REPORT_88
+        "Page #page# of #count#", // RID_REPORT_89
+        "~Izinkundla ezikumbiko", // RID_REPORT_9
+        "Page number:", // RID_REPORT_90
+        "Page count:", // RID_REPORT_91
+        "No valid report template was found.", // RID_REPORT_92
+        "Page:", // RID_REPORT_93
+        "Align Left - Border", // RID_REPORT_94
+        "Align Left - Compact", // RID_REPORT_95
+        "Align Left - Elegant", // RID_REPORT_96
+        "Align Left - Highlighted", // RID_REPORT_97
+        "Align Left - Modern", // RID_REPORT_98
+        "Align Left - Red & Blue", // RID_REPORT_99
+        "Umsizi Wethebula", // RID_TABLE_1
+        "Set primary key", // RID_TABLE_10
+        "Create table", // RID_TABLE_11
+        "Lomsizi ukusiza ukuqamba ithebula lomtapo wakho we-data. Ngemva kokukhetha umkhakha wethebula kanye nesampula, khetha izikhala ofuna ukuzifaka ethebuleni lakho. Ungafaka izikhala ezivela kumasampula angaphezu kwelilodwa.", // RID_TABLE_14
+        "~Umqathango", // RID_TABLE_15
+        "Okwe~bhizinisi", // RID_TABLE_16
+        "Oko~muntu qobo", // RID_TABLE_17
+        "~Amasampula amathebula", // RID_TABLE_18
+        "A~vailable fields", // RID_TABLE_19
+        "Khetha izikhala", // RID_TABLE_2
+        "Ukwaziswa kwasezikhaleni", // RID_TABLE_20
+        "+", // RID_TABLE_21
+        "-", // RID_TABLE_22
+        "Igama lenkundla", // RID_TABLE_23
+        "Uhlobo lwenkundla", // RID_TABLE_24
+        "~Izikhala ezikhethiwe", // RID_TABLE_25
+        "Ukhiye oyinhloko ukhomba ngendlela ekhethekile umbhalo ogciniwe osethebuleni lomtapo we-data. Labokhiyebasiza ukuxhumanisa ukwaziswa okusemathebuleni ahlukene, futhi kutuswaube nokhiye oyinhloko kuwo wonke amathebula. Ngaphandle kokhiye oyinhloko, ngeke kwenzeke ukufaka i-data kuleli thebula.", // RID_TABLE_26
+        "~Qamba ukhiye oyinhloko", // RID_TABLE_27
+        "~Faka ukhiye yinhloko ngokuzenzekelayo", // RID_TABLE_28
+        "~Sebenzisa isikhala esikhona njengokhiye oyinhloko", // RID_TABLE_29
+        "Hlela izinhlobo nezakhiwo", // RID_TABLE_3
+        "Define p~rimary key as a combination of several fields", // RID_TABLE_30
+        "Ig~ama lesiKhala", // RID_TABLE_31
+        "~Izikhala zokhiye abayinhloko", // RID_TABLE_32
+        "Inani~lokuzenzela", // RID_TABLE_33
+        "Ufuna ukulibizani ithebula lakho?", // RID_TABLE_34
+        "Siyakuhalalisela. Usufake konke ukwaziswa okudingekayo ukuba ungaqamba ithebula lakho.", // RID_TABLE_35
+        "What do you want to do next?", // RID_TABLE_36
+        "Lungisa umklamo wethebula", // RID_TABLE_37
+        "Ukufaka i-data masinyane", // RID_TABLE_38
+        "Uku~qamba ifomu ngokusekelwe kulelithebula", // RID_TABLE_39
+        "Set primary key", // RID_TABLE_4
+        "Lelithebula oliqambile alivuleki.", // RID_TABLE_40
+        "Igama laleli thebula '%TABLENAME' linohlamvu ('%SPECIALCHAR') olungase lungasebenzi kulomtapo we-data.", // RID_TABLE_41
+        "Igama lesikhala '%FIELDNAME' linohlamvu olukhethekile ('%SPECIALCHAR') olungase lungasebenzi kulomtapo we-data.", // RID_TABLE_42
+        "Field", // RID_TABLE_43
+        "IthebulaLami", // RID_TABLE_44
+        "Faka isikhala", // RID_TABLE_45
+        "Susa lesi sikhala esikhethiweyo", // RID_TABLE_46
+        "Lesi sikhala asizange sifakeke ngoba lokhu kuzoba ngaphezu kwenani elikhulu ngokwanele lika%COUNT lezikhala ezingafakwa kwithebula lomtapo we-data", // RID_TABLE_47
+        "The name '%TABLENAME' already exists.\\nPlease enter another name.", // RID_TABLE_48
+        "Ikhathalogi yethebula", // RID_TABLE_49
+        "Create table", // RID_TABLE_5
+        "Uhlaka lwethebula", // RID_TABLE_50
+        "The field '%FIELDNAME' already exists.", // RID_TABLE_51
+        "Khetha izikhala zethebula lakho", // RID_TABLE_8
+        "Hlela izinhlobo zezikhala nezakhiwo", // RID_TABLE_9
+        "An error has occurred in the wizard.", // RTErrorDesc
+        "Iphutha", // RTErrorHeader
+        "Kuqediwe", // Ready
+        "Ushicileo olukhulu lubuyekeziwe.", // ReeditMacro
+        "Conversion status:", // STATUSLINE_0
+        "Isimo sokuguqula sezingqwembe zegumbi:", // STATUSLINE_1
+        "Ukubhaliswa kwemibandela ehambelanayo: Iphepha lesi-%1Number%1 kwangu-%2TotPageCount%2", // STATUSLINE_2
+        "Umfakela wemibandela okumele iguqulwe...", // STATUSLINE_3
+        "Ukuvikeleka kwephepha ngalinye kuzovuselelwa...", // STATUSLINE_4
+        "Ukuguqulwa kwamalungu ezimali ezingwembene zegumbi...", // STATUSLINE_5
+        "Izinga lokunwebeka", // STEP_AUTOPILOT_0
+        "Ushicilelo lwe-%PRODUCTNAME Calc o~lulodwa", // STEP_AUTOPILOT_1
+        "Guqula futhi izinkundla kanye namatafula oshicilelweni lombhalo", // STEP_AUTOPILOT_10
+        "Uhlu ~lwamafayela oluphelele", // STEP_AUTOPILOT_2
+        "Ushicilelo lwemvelaphi:", // STEP_AUTOPILOT_3
+        "Uhlu lwamafayela lwemvelaphi:", // STEP_AUTOPILOT_4
+        "~Kuhlanganisa nezigcini zamafayela ezincane", // STEP_AUTOPILOT_5
+        "Uhlu lwamafayela lokuqondiwe:", // STEP_AUTOPILOT_6
+        "Yeka ukuvikela iphepha okwesikhashana ngaphandle kombuzo", // STEP_AUTOPILOT_7
+        "~Ushicilelo lonke", // STEP_CONVERTER_0
+        "Ukhetho", // STEP_CONVERTER_1
+        "~Izitayela zamagumbi", // STEP_CONVERTER_2
+        "Amagumbi ezimali e~phepheni lamanje", // STEP_CONVERTER_3
+        "Amagumbi ezimali o~shicilelweni lonke", // STEP_CONVERTER_4
+        "Umbandela o~khethiwe", // STEP_CONVERTER_5
+        "Khetha Izitayela Zamagumbi", // STEP_CONVERTER_6
+        "Khetha amagumbi ezimali", // STEP_CONVERTER_7
+        "Imibandela yezimali:", // STEP_CONVERTER_8
+        "Izigqwembe:", // STEP_CONVERTER_9
+        "Inqubo", // STEP_LASTPAGE_0
+        "Ivundulula ushicilelo oluhambelanayo...", // STEP_LASTPAGE_1
+        "Iguqula ushicilelo...", // STEP_LASTPAGE_2
+        "Izilungiselelo:", // STEP_LASTPAGE_3
+        "Iphepha lihlale lingavikelekile", // STEP_LASTPAGE_4
+        "~Nqamula", // STEP_ZERO_0
+        "~Usizo", // STEP_ZERO_1
+        "< ~Emuva", // STEP_ZERO_2
+        "~Guqula", // STEP_ZERO_3
+        "Yazi: Inani lezimali lezixhumanisi zangaphandle kanye nezingxenye zokuguqula izimali ezindleleni zokuphumelelisa angeke zaguqulwa.", // STEP_ZERO_4
+        "Kuqala, yeka ukuvukela wonke amaphepha.", // STEP_ZERO_5
+        "Izimali:", // STEP_ZERO_6
+        "C~ontinue >", // STEP_ZERO_7
+        "~Vala", // STEP_ZERO_8
+        "(Standard)", // STYLENAME_0
+        "Autumn Leaves", // STYLENAME_1
+        "Millennium", // STYLENAME_10
+        "Nature", // STYLENAME_11
+        "Neon", // STYLENAME_12
+        "Night", // STYLENAME_13
+        "PC Nostalgia", // STYLENAME_14
+        "Pastel", // STYLENAME_15
+        "Pool Party", // STYLENAME_16
+        "Pumpkin", // STYLENAME_17
+        "Be", // STYLENAME_2
+        "Black and White", // STYLENAME_3
+        "Blackberry Bush", // STYLENAME_4
+        "Blue Jeans", // STYLENAME_5
+        "Fifties Diner", // STYLENAME_6
+        "Glacier", // STYLENAME_7
+        "Green Grapes", // STYLENAME_8
+        "Kunjengolwandle", // STYLENAME_9
+        "Ukhetho lwengikithi", // STYLES_0
+        "Iphutha ngenkathi kugcinwa ushicilelo ebhodini elibophayo! Umnyakazo olandelayo awuqaqeki.", // STYLES_1
+        "~Nqamula", // STYLES_2
+        "~Kulungile", // STYLES_3
+        "Ihlanganisa nohlu lwamafayela oluncane", // SearchInSubDir
+        "Khombisa ifayela lokuqopha", // ShowLogfile
+        "Ushicilelo lwemvelaphi", // SourceDocuments
+        "Lonke uhlu lwamafayela oluncane luzonakwa", // SumInclusiveSubDir
+        "All PowerPoint/Publisher documents contained in the following directory will be imported:", // SumMSDrawDocuments
+        "Zonke izingqwembe ze-PowerPoint eziqukethwe ohlwini lwamafayela olulandelayo zizohwetshelwa ngaphakathi:", // SumMSDrawTemplates
+        "Lonke ushicilelo lwe-Excel oluqukethwe ohlwini lwamafayela olulandelayo luzohwetshelwa ngaphakathi:", // SumMSTableDocuments
+        "Zonke izingwembe ze-Excel eziqukethwe ohlwini lwamafayela olulandelayo zizohwetshelwa ngaphakathi:", // SumMSTableTemplates
+        "Lonke ushicilelo lwe-Word oluqukethwe ohlwini lwamafayela olulandelayo luzohwetshelwa ngaphakathi:", // SumMSTextDocuments
+        "Zonke izingqwembe ze-Word eziqukethwe ohlwini lwamafayela olulandelayo zozohwetshelwa ngaphakathi:", // SumMSTextTemplates
+        "Lolu luhwetshelwa ngaphandle ohlwini lwamafayela olulandelayo:", // SumSaveDokumente
+        "Okufingqiwe:", // SummaryHeader
+        "Ushicilelo oluqondiwe", // TargetDocuments
+        "Gcina kwi:", // TextExportLabel
+        "Inkundla yolwazi lomsebenzisi ayichaziwe!", // TextField
+        "Hwebela ngephakathi kusuka:", // TextImportLabel
+        "This wizard convert legacy format documents to Open Document Format for Office Applications.", // WelcometextLabel1
+        "Khetha uhlobo loshicilelo oluzoguqulwa:", // WelcometextLabel3
+        "--verbose", // addopts
+        "__init__.py", // python_files
+    },
+    { // rule_allowed_autofs_options
+        "autofs_negative_timeout", // option
+        "^autofs$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_certmap_options
+        "domains", // option
+        "^certmap/[^/\\@]\\+/[^/\\@]\\+$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_domain_options
+        "inherit_from", // option
+        "^\\(domain\\|application\\)/[^/]\\+$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_ifp_options
+        "user_attributes", // option
+        "^ifp$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_kcm_options
+        "krb5_auth_timeout", // option
+        "^kcm$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_nss_options
+        "memcache_size_initgroups", // option
+        "^nss$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_pac_options
+        "pac_check", // option
+        "^pac$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_pam_options
+        "passkey_debug_libfido2", // option
+        "^pam$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_prompting_2fa_options
+        "second_prompt", // option
+        "^prompting/2fa$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_prompting_2fa_subsec_options
+        "second_prompt", // option
+        "^prompting/2fa/[^/\\@]\\+$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_prompting_passkey_options
+        "touch_prompt", // option
+        "^prompting/passkey$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_prompting_passkey_subsec_options
+        "touch_prompt", // option
+        "^prompting/passkey/[^/\\@]\\+$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_prompting_password_options
+        "password_prompt", // option
+        "^prompting/password$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_prompting_password_subsec_options
+        "password_prompt", // option
+        "^prompting/password/[^/\\@]\\+$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_sections
+        "session_recording", // section
+        "^certmap/[^/\\@]\\+/[^/\\@]\\+$", // section_re
+        "ini_allowed_sections", // validator
+    },
+    { // rule_allowed_session_recording_options
+        "exclude_groups", // option
+        "^session_recording$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_ssh_options
+        "ssh_use_certificate_matching_rules", // option
+        "^ssh$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_sssd_options
+        "passkey_verification", // option
+        "^sssd$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_subdomain_options
+        "pam_gssapi_indicators_map", // option
+        "^domain/[^/\\@]\\+/[^/\\@]\\+$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_allowed_sudo_options
+        "sudo_threshold", // option
+        "^sudo$", // section_re
+        "ini_allowed_options", // validator
+    },
+    { // rule_sssd_checks
+        "sssd_checks", // validator
+    },
+    { // time_gregorian
+        "[HH]:[mm]", // time_short
+    },
+    { // time_gregorian_time
+        "[HH]:[mm]:[ss]", // medium
+    },
+    { // transforms_posthyphenation_diaeresis
+        "{ |([ϊΐῒῗϋΰῢῧ]) }", // hyphen_1_0
+        "{ remove }", // hyphen_1_1
+        "{ no = {1}, pre = -, post = {1|ϊΐῒῗϋΰῢῧ|ιίὶῖυύὺῦ} }; This file is part of babel. For further details see:", // hyphen_1_2
+    },
+    { // transforms_posthyphenation_digraphs
+        "{ ([czCZ])|{1}([sS]) }", // hyphen_1_0
+        "{}", // hyphen_1_1
+        "{ pre = {2}-, data = 1 }", // hyphen_1_2
+        "{}", // hyphen_1_3
+        "{}", // hyphen_1_4
+        "{ ([dsDS])|{1}([zZ]) }", // hyphen_2_0
+        "{}", // hyphen_2_1
+        "{ pre = {2}-, data = 1 }", // hyphen_2_2
+        "{}", // hyphen_2_3
+        "{}", // hyphen_2_4
+        "{ ([glntGLNT])|{1}([yY]) }", // hyphen_3_0
+        "{}", // hyphen_3_1
+        "{ pre = {2}-, data = 1 }", // hyphen_3_2
+        "{}", // hyphen_3_3
+        "{}", // hyphen_3_4
+    },
+    { // transforms_posthyphenation_hyphen
+        "{ (){a}=(){a} }", // repeat_1_0
+        "{}", // repeat_1_1
+        "{ no = -, pre = -, post = -, data = 1 }", // repeat_1_2
+    },
+    { // transforms_prehyphenation_danda
+        "{ |[।॥] }", // nobreak_1_0
+        "{ insert, penalty=10000 }", // nobreak_1_1
+        "{}", // nobreak_1_2
+        "{}", // nobreak_1_3
+    },
+    { // transforms_prehyphenation_digraphs
+        "{ A[Ee] }", // ligatures_1_0
+        "{ string = Æ }", // ligatures_1_1
+        "{ remove }", // ligatures_1_2
+        "{ ae }", // ligatures_2_0
+        "{ string = æ }", // ligatures_2_1
+        "{ remove }", // ligatures_2_2
+        "{ O[Ee] }", // ligatures_3_0
+        "{ string = Œ }", // ligatures_3_1
+        "{ remove }", // ligatures_3_2
+        "{ oe }", // ligatures_4_0
+        "{ string = œ }", // ligatures_4_1
+        "{ remove }", // ligatures_4_2
+    },
+    { // transforms_prehyphenation_hyphen
+        "{ (){a}=(){a} }", // repeat_1_0
+        "{}", // repeat_1_1
+        "{ no = -, pre = -, post = -, data = 1 }", // repeat_1_2
+    },
+    { // transforms_prehyphenation_kashida
+        "{ ()[يئهشسقفغعضصنمكلظطخحجثتب]()[يئهشسقفغعضصنمكلظطخحجثتباأإآوؤذدزرة] }", // base_1_0
+        "{ kashida = 500 }", // base_1_1
+        "{ [يئهشسقفغعضصنمكلظطخحجثتب]()[ًٍَُِّ]()[يئهشسقفغعضصنمكلظطخحجثتباأإآوؤذدزرة] }", // base_2_0
+        "{ kashida = 500 }", // base_2_1
+        "{ [يئهشسقفغعضصنمكلظطخحجثتب][ًٍَُِّ]()[ًٍَُِّ]()[يئهشسقفغعضصنمكلظطخحجثتباأإآوؤذدزرة] }", // base_3_0
+        "{ kashida = 500 }", // base_3_1
+        "{ ()ل()[ًٍَُِّ]*[اأإآ] }", // base_4_0
+        "{ kashida = 0 }", // base_4_1
+        "{ ()[يئهشسقفغعضصنمكلظطخحچجثتپب]()[ًٍَُِّ]*[يئهشسقفغعضصنمكلظطخحچجثتپباأإآوؤذدژزرة] }", // plain_1_0
+        "{ kashida = 500 }", // plain_1_1
+        "{ ()ل()[ًٍَُِّ]*[اأإآ] }", // plain_2_0
+        "{ kashida = 0 }", // plain_2_1
+    },
+    { // transforms_prehyphenation_letters
+        "{ ([Jj]) }", // noj_1_0
+        "{ string = {1|Jj|Ii} }", // noj_1_1
+        "{ ([Uv]) }", // uv_1_0
+        "{ string = {1|Uv|Vu} }", // uv_1_1
+    },
+    { // transforms_prehyphenation_oneletter
+        "{ |[AIiVvOoUuSsZzKk]()|() }", // nobreak_1_0
+        "{ insert, penalty=10000 }", // nobreak_1_1
+        "{}", // nobreak_1_2
+    },
+    { // transforms_prehyphenation_prehyphen
+        "{ [{p}|] () -{a} () }", // nobreak_1_0
+        "{}", // nobreak_1_1
+        "{ insert, penalty = 10000 }", // nobreak_1_2
+        "{ insert, space = 0 0 0 }", // nobreak_1_3
+        "{}", // nobreak_1_4
+    },
+    { // transforms_prehyphenation_punctuation
+        "{ {a}()|[:;!{?}]() }", // space_1_0
+        "{ insert, penalty = 10000 }", // space_1_1
+        "{ spacefactor= .8 .3 .8, data = 2 }", // space_1_2
+        "{}", // space_1_3
+        "{ {a}()[:;!{?}]() }", // space_2_0
+        "{ insert, penalty = 10000 }", // space_2_1
+        "{ insert, spacefactor= .8 .3 .8, data = 1 }", // space_2_2
+        "{}", // space_2_3
+        "{ [^|{(}{[}{007B} ] () : () }", // space_3_0
+        "{ insert, penalty = 10000 }", // space_3_1
+        "{ insert, spacefactor= 1 1 1, data = 1 }", // space_3_2
+        "{}", // space_3_3
+        "{ [^{(}{[}{007B} ] () |: () }", // space_4_0
+        "{ insert, penalty = 10000 }", // space_4_1
+        "{ spacefactor= 1 1 1, data = 2 }", // space_4_2
+        "{}", // space_4_3
+        "{ [^|]()»() }", // space_5_0
+        "{ insert, penalty = 10000 }", // space_5_1
+        "{ insert, spacefactor= .8 .3 .8, data = 1 }", // space_5_2
+        "{}", // space_5_3
+        "{}", // space_5_4
+        "{ [^|]()|»() }", // space_6_0
+        "{ insert, penalty = 10000 }", // space_6_1
+        "{ spacefactor= .8 .3 .8, data = 2 }", // space_6_2
+        "{}", // space_6_3
+        "{}", // space_6_4
+        "{ «[^|] }", // space_7_0
+        "{}", // space_7_1
+        "{ insert, penalty = 10000 }", // space_7_2
+        "{ insert, spacefactor= .8 .3 .8, data = 1 }", // space_7_3
+        "{}", // space_7_4
+        "{ «|[^|] }", // space_8_0
+        "{}", // space_8_1
+        "{ insert, penalty = 10000 }", // space_8_2
+        "{ spacefactor= .8 .3 .8, data = 1 }", // space_8_3
+        "{}", // space_8_4
+    },
+    { // transforms_prehyphenation_sigma
+        "{ [^\"]()σ(){A} }", // final_1_0
+        "{ string = ς }", // final_1_1
+        "{ [^\"]()σ()$ }", // final_2_0
+        "{ string = ς }", // final_2_1
+        "{ ()\"()[σΣ] } }", // final_3_0
+        "{ remove }", // final_3_1
+    },
+    { // transforms_prehyphenation_transliteration
+        "{ ([aAE]): }", // cj_1_0
+        "{ string = {1|aAE|ֱֲֳ} }", // cj_1_1
+        "{ remove }", // cj_1_2
+        "{ ([/{+}])s }", // cj_2_0
+        "{ string = {1|/{002C}+|ששׂשׁ} }", // cj_2_1
+        "{ remove }", // cj_2_2
+        "{ {-}{-} }", // cj_3_0
+        "{ string = ־ }", // cj_3_1
+        "{ remove }", // cj_3_2
+        "{ {.}([htsS]) }", // cj_4_0
+        "{ remove }", // cj_4_1
+        "{ string = {1|htsS|חטצץ} }", // cj_4_2
+        "{ /a({a}) }", // cj_5_0
+        "{ remove }", // cj_5_1
+        "{ string = {1} }", // cj_5_2
+        "{ string =  ַ}", // cj_5_3
+        "{ w([o{*}]) }", // cj_6_0
+        "{ string = {1|o*|וֹוּ} }", // cj_6_1
+        "{ ([aAbdeEghikKlmMnNoOpPqrstuUwyz{*}:'’`‘;]) }", // cj_7_0
+        "{ string = {1|aAbdeEghikKlmMnNoOpPqrstuUwyz*:'’`‘;|ַָבדֵֶגהִכךלמםנןֹוֹפףקרסתֻוּויזְּאאעע׃} }", // cj_7_1
+        "{ {+}a{*} }", // dad_1_0
+        "{ string = ٰ }", // dad_1_1
+        "{ string = ّ }", // dad_1_2
+        "{ remove }", // dad_1_3
+        "{ {+}([aui])N }", // dad_2_0
+        "{ string = {1|aui|ًٌٍ} }", // dad_2_1
+        "{ string = ّ }", // dad_2_2
+        "{ remove }", // dad_2_3
+        "{ ([aui])N }", // dad_3_0
+        "{ string = {1|aui|ًٌٍ} }", // dad_3_1
+        "{ remove }", // dad_3_2
+        "{ ([tAa]){*} }", // dad_4_0
+        "{ string = {1|tAa|ةٱٰ} }", // dad_4_1
+        "{ remove }", // dad_4_2
+        "{ ([tds])h }", // dad_5_0
+        "{ string = {1|tds|ثذش} }", // dad_5_1
+        "{ remove }", // dad_5_2
+        "{ {+}([aui]) }", // dad_6_0
+        "{ string = {1|aui|َُِ} }", // dad_6_1
+        "{ string = ّ }", // dad_6_2
+        "{ '([AauiIbnf]) }", // dad_7_0
+        "{ remove }", // dad_7_1
+        "{ string = {1|AauiIbnf|آأؤإئٮںڡ} }", // dad_7_2
+        "{ ([{007C}AbtjHxdrzsSDTZ`RfqklmnhUIYaui+opCvgJe]) }", // dad_8_0
+        "{ string = {1|{007C}AbtjHxdrzsSDTZ`RfqklmnhUIYaui+opCvgJe|ءابتجحخدرزسصضطظعغفقكلمنهوىيَُِّْپچڤگژۀ} }", // dad_8_1
+        "{ ([ln])j }", // gajica_1_0
+        "{ string = {1|ln|љњ} }", // gajica_1_1
+        "{ ([LN])[jJ] }", // gajica_2_0
+        "{ string = {1|LN|ЉЊ} }", // gajica_2_1
+        "{ dž }", // gajica_3_0
+        "{ string = џ }", // gajica_3_1
+        "{ D[žŽ] }", // gajica_4_0
+        "{ string = Џ }", // gajica_4_1
+        "{ ([abvgdđežzijklmnoprstćufhcčšABVGDĐEŽZIJKLMNOPRSTĆUFHCČŠ]) }", // gajica_5_0
+        "{ string = {1|abvgdđežzijklmnoprstćufhcčšABVGDĐEŽZIJKLMNOPRSTĆUFHCČŠ|абвгдђежзијклмнопрстћуфхцчшАБВГДЂЕЖЗИЈКЛМНОПРСТЋУФХЦЧШ} }", // gajica_5_1
+        "{ [{0915}-{0939}]([{0915}-{0939}]) }", // hk_10_0
+        "{}", // hk_10_1
+        "{ string = ^^^^094d{1} }", // hk_10_2
+        "{ [{0915}-{0939}]{0905} }", // hk_11_0
+        "{}", // hk_11_1
+        "{ remove }", // hk_11_2
+        "{ lRR }", // hk_1_0
+        "{ string = ॡ }", // hk_1_1
+        "{ remove }", // hk_1_2
+        "{ remove }", // hk_1_3
+        "{ OM }", // hk_2_0
+        "{ string = ॐ }", // hk_2_1
+        "{ remove }", // hk_2_2
+        "{ {007C}{007C} }", // hk_3_0
+        "{ string = ॥ }", // hk_3_1
+        "{ remove }", // hk_3_2
+        "{ ([lR])R }", // hk_4_0
+        "{ string = {1|lR|ऌॠ} }", // hk_4_1
+        "{ remove }", // hk_4_2
+        "{ a([iu]) }", // hk_5_0
+        "{ remove }", // hk_5_1
+        "{ string = {1|iu|ऐऔ} }", // hk_5_2
+        "{ ([kgcjTDtdpb])h }", // hk_6_0
+        "{ string = {1|kgcjTDtdpb|खघछझठढथधफभ} }", // hk_6_1
+        "{ remove }", // hk_6_2
+        "{ ([MHaAiIuUReokgGcjJTDNtdnpbmyrlvzSshL{007C}']) }", // hk_7_0
+        "{ string = {1|MHaAiIuUReokgGcjJTDNtdnpbmyrlvzSshL{007C}'|ंःअआइईउऊऋएओकगङचजञटडणतदनपबमयरलवशषसहळ।ऽ} }", // hk_7_1
+        "{ [{0915}-{0939}]([आइईउऊऋॠऌॡएऐओऔऎऒ]) }", // hk_8_0
+        "{}", // hk_8_1
+        "{ string = {1|आइईउऊऋॠऌॡएऐओऔऎऒ|ािीुूृॄॢॣेैोौॆॊ} }", // hk_8_2
+        "{ [{0915}-{0939}]([{0915}-{0939}]) }", // hk_9_0
+        "{}", // hk_9_1
+        "{ string = ^^^^094d{1} }", // hk_9_2
+        "{ ([kgṅcjñṭḍṇtdnpbmyrlvśṣsh])([āiīuūṛṝḷḹeo]) }", // iast_10_0
+        "{ string = {1|kgṅcjñṭḍṇtdnpbmyrlvśṣsh|कगङचजञटडणतदनपबमयरलवशषसह} }", // iast_10_1
+        "{ string = {2|āiīuūṛṝḷḹeo|ािीुूृॄॢॣेो} }", // iast_10_2
+        "{ ([kgṅcjñṭḍṇtdnpbmyrlvśṣsh]) }", // iast_11_0
+        "{ string = {1|kgṅcjñṭḍṇtdnpbmyrlvśṣsh|कगङचजञटडणतदनपबमयरलवशषसह}् }", // iast_11_1
+        "{ ai }", // iast_12_0
+        "{ string = ऐ }", // iast_12_1
+        "{ au }", // iast_13_0
+        "{ string = औ }", // iast_13_1
+        "{ a }", // iast_14_0
+        "{ string = अ }", // iast_14_1
+        "{ ā }", // iast_15_0
+        "{ string = आ }", // iast_15_1
+        "{ i }", // iast_16_0
+        "{ string = इ }", // iast_16_1
+        "{ ī }", // iast_17_0
+        "{ string = ई }", // iast_17_1
+        "{ u }", // iast_18_0
+        "{ string = उ }", // iast_18_1
+        "{ ū }", // iast_19_0
+        "{ string = ऊ }", // iast_19_1
+        "{ ([AIUṚṜḶḸEOṂḤKGṄCJÑṬḌṆTDNPBMYRLVŚṢSH]) }", // iast_1_0
+        "{ string = {1|AIUṚṜḶḸEOṂḤKGṄCJÑṬḌṆTDNPBMYRLVŚṢSH|aiuṛṝḷḹeoṃḥkgṅcjñṭḍṇtdnpbmyrlvśṣsh} }", // iast_1_1
+        "{ ṛ }", // iast_20_0
+        "{ string = ऋ }", // iast_20_1
+        "{ ṝ }", // iast_21_0
+        "{ string = ॠ }", // iast_21_1
+        "{ ḷ }", // iast_22_0
+        "{ string = लृ }", // iast_22_1
+        "{ ḹ }", // iast_23_0
+        "{ string = लॄ }", // iast_23_1
+        "{ e }", // iast_24_0
+        "{ string = ए }", // iast_24_1
+        "{ o }", // iast_25_0
+        "{ string = ओ }}", // iast_25_1
+        "{ ' }", // iast_26_0
+        "{ string = ऽ }", // iast_26_1
+        "{ ṃ }", // iast_27_0
+        "{ string = ं }", // iast_27_1
+        "{ ḥ }", // iast_28_0
+        "{ string = ः }", // iast_28_1
+        "{ ([0123456789]) }", // iast_29_0
+        "{ string = {1|0123456789|०१२३४५६७८९} }", // iast_29_1
+        "{ ([kgṅcjñṭḍṇtdnpbmyrlvśṣsh])|([aiuṛṝḷḹeokgṅcjñṭḍṇtdnpbmyrlvśṣsh]) }", // iast_2_0
+        "{ string = {1} }", // iast_2_1
+        "{ remove }", // iast_2_2
+        "{ string = {2} }", // iast_2_3
+        "{ [./][./] }", // iast_30_0
+        "{ string = ॥ }", // iast_30_1
+        "{ [./] }", // iast_31_0
+        "{ string = । }", // iast_31_1
+        "{ [:] }", // iast_32_0
+        "{ string = – }", // iast_32_1
+        "{ oṃ }", // iast_3_0
+        "{ string = ॐ }", // iast_3_1
+        "{ ([kgcjṭḍtdpb])[h][a]([iu]) }", // iast_4_0
+        "{ string = {1|kgcjṭḍtdpb|खघछझठढथधफभ} }", // iast_4_1
+        "{ remove }", // iast_4_2
+        "{ remove }", // iast_4_3
+        "{ string = {2|iu|ैौ} }", // iast_4_4
+        "{ ([kgcjṭḍtdpb])[h][a] }", // iast_5_0
+        "{ string = {1|kgcjṭḍtdpb|खघछझठढथधफभ} }", // iast_5_1
+        "{ remove }", // iast_5_2
+        "{ remove }", // iast_5_3
+        "{ ([kgcjṭḍtdpb])[h]([āiīuūṛṝḷḹeo]) }", // iast_6_0
+        "{ string = {1|kgcjṭḍtdpb|खघछझठढथधफभ} }", // iast_6_1
+        "{ remove }", // iast_6_2
+        "{ string = {2|āiīuūṛṝḷḹeo|ािीुूृॄॢॣेो} }", // iast_6_3
+        "{ ([kgcjṭḍtdpb])[h] }", // iast_7_0
+        "{ string = {1|kgcjṭḍtdpb|खघछझठढथधफभ}् }", // iast_7_1
+        "{ remove }", // iast_7_2
+        "{ ([kgṅcjñṭḍṇtdnpbmyrlvśṣsh])[a]([iu]) }", // iast_8_0
+        "{ string = {1|kgṅcjñṭḍṇtdnpbmyrlvśṣsh|कगङचजञटडणतदनपबमयरलवशषसह} }", // iast_8_1
+        "{ remove }", // iast_8_2
+        "{ string = {2|iu|ैौ} }", // iast_8_3
+        "{ ([kgṅcjñṭḍṇtdnpbmyrlvśṣsh])[a] }", // iast_9_0
+        "{ string = {1|kgṅcjñṭḍṇtdnpbmyrlvśṣsh|कगङचजञटडणतदनपबमयरलवशषसह} }", // iast_9_1
+        "{ remove }", // iast_9_2
+        "{ ()>(['={007E}`])()[ΑΕΗΙΟΥΩ] }", // omega_10_0
+        "{ remove }", // omega_10_1
+        "{ string = {1|'={007E}`|῎῏῏῍} }", // omega_10_2
+        "{ >([αεηιορυωάέήίόύώάέήίόύώᾶῆῖῦῶὰὲὴὶὸὺὼΑΕΗΙΟΩΆΈΉΊΌΏΆΈΉΊΌΏᾺῈῊῚῸῺ]) }", // omega_11_0
+        "{ remove }", // omega_11_1
+        "{ string = {1|αεηιορυωάέήίόύώάέήίόύώᾶῆῖῦῶὰὲὴὶὸὺὼΑΕΗΙΟΩΆΈΉΊΌΏΆΈΉΊΌΏᾺῈῊῚῸῺ|ἀἐἠἰὀῤὐὠἄἔἤἴὄὔὤἄἔἤἴὄὔὤἆἦἶὖὦἂἒἢἲὂὒὢἈἘἨἸὈὨἌἜἬἼὌὬἌἜἬἼὌὬἊἚἪἺὊὪ} }", // omega_11_2
+        "{ <([αεηιορυωάέήίόύώάέήίόύώᾶῆῖῦῶὰὲὴὶὸὺὼΑΕΗΙΟΡΥΩΆΈΉΊΌΎΏΆΈΉΊΌΎΏᾺῈῊῚῸῪῺ]) }", // omega_12_0
+        "{ remove }", // omega_12_1
+        "{ string = {1|αεηιορυωάέήίόύώάέήίόύώᾶῆῖῦῶὰὲὴὶὸὺὼΑΕΗΙΟΡΥΩΆΈΉΊΌΎΏΆΈΉΊΌΎΏᾺῈῊῚῸῪῺ|ἁἑἡἱὁῥὑὡἅἕἥἵὅὕὥἅἕἥἵὅὕὥἇἧἷὗὧἃἓἣἳὃὓὣἉἙἩἹὉῬὙὩἍἝἭἽὍὝὭἍἝἭἽὍὝὭἋἛἫἻὋὛὫ} }", // omega_12_2
+        "{ ([αηωάήώάήώᾶῆῶὰὴὼἁἡὡἀἠὠἅἥὥἇἧὧἃἣὣἄἤὤἆἦὦἂἢὢΑΗΩἉἩὩἈἨὨἍἭὭἏἯὯἋἫὫἌἬὬἎἮὮἊἪὪ]){007C} }", // omega_13_0
+        "{ string = {1|αηωάήώάήώᾶῆῶὰὴὼἁἡὡἀἠὠἅἥὥἇἧὧἃἣὣἄἤὤἆἦὦἂἢὢΑΗΩἉἩὩἈἨὨἍἭὭἏἯὯἋἫὫἌἬὬἎἮὮἊἪὪ|ᾳῃῳᾴῄῴᾴῄῴᾷῇῷᾲῂῲᾁᾑᾡᾀᾐᾠᾅᾕᾥᾇᾗᾧᾃᾓᾣᾄᾔᾤᾆᾖᾦᾂᾒᾢᾼῌῼᾉᾙᾩᾈᾘᾨᾍᾝᾭᾏᾟᾯᾋᾛᾫᾌᾜᾬᾎᾞᾮᾊᾚᾪ} }", // omega_13_1
+        "{ remove }", // omega_13_2
+        "{ '([aehiouwAEHIOUW]) }", // omega_1_0
+        "{ remove }", // omega_1_1
+        "{ string = {1|aehiouwAEHIOUW|άέήίόύώΆΈΉΊΌΎΏ} }", // omega_1_2
+        "{ [={007E}]([ahiuwpqsPQS]) }", // omega_2_0
+        "{ remove }", // omega_2_1
+        "{ string = {1|ahiuwpqsPQS|ᾶῆῖῦῶϡϟϛϠϞϚ} }", // omega_2_2
+        "{ `([aehiouwAEHIOUW]) }", // omega_3_0
+        "{ remove }", // omega_3_1
+        "{ string = {1|aehiouwAEHIOUW|ὰὲὴὶὸὺὼᾺῈῊῚῸῪῺ} }", // omega_3_2
+        "{ ([a-zA-Z{?};]) }", // omega_4_0
+        "{ string = {1|abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ?;_^|αβςδεφγηιθκλμνοπχρστυϝωξψζΑΒ῝ΔΕΦΓΗΙΘΚΛΜΝΟΠΧΡΣΤΥϜΩΞΨΖ;·} }", // omega_4_1
+        "{ \"([ιυίύίύῖῦὶὺΙΥ]) }", // omega_5_0
+        "{ remove }", // omega_5_1
+        "{ string = {1|ιυίύίύῖῦὶὺΙΥ|ϊϋΐΰΐΰῗῧῒῢΪΫ} }", // omega_5_2
+        "{ \"([ιυίύίύῖῦὶὺΙΥ]) }", // omega_6_0
+        "{ remove }", // omega_6_1
+        "{ string = {1|ιυίύίύῖῦὶὺΙΥ|ϊϋΐΰΐΰῗῧῒῢΪΫ} }", // omega_6_2
+        "{ <[={007E}]([ΑΗΙΥΩ]) }", // omega_7_0
+        "{ remove }", // omega_7_1
+        "{ remove }", // omega_7_2
+        "{ string = {1|ΑΗΙΥΩ|ἏἯἿὟὯ} }", // omega_7_3
+        "{ >[={007E}]([ΑΗΙΩ]) }", // omega_8_0
+        "{ remove }", // omega_8_1
+        "{ remove }", // omega_8_2
+        "{ string = {1|ΑΗΙΩ|ἎἮἾὮ} }", // omega_8_3
+        "{ ()<(['={007E}`])()[ΑΕΗΙΟΥΩ] }", // omega_9_0
+        "{ remove }", // omega_9_1
+        "{ string = {1|'={007E}`|῞῟῟῝} }", // omega_9_2
+    },
+    { // typography
+        "", // exhyphenchar
+        "yes", // frenchspacing
+        "", // hyphenationmin
+        "", // hyphenchar
+        "", // hyphenrules
+        "0 .1 0", // intraspace
+        "", // lefthyphenmin
+        "c", // linebreaking
+        "", // postexhyphenchar
+        "", // posthyphenchar
+        "", // preexhyphenchar
+        "", // prehyphenchar
+        "", // righthyphenmin
+        ".5 0 0", // space
+    },
+    { // typography_hyphenate_other
+        "\"27 \"2D", // locale
+        "\"0CF1 \"0CF2", // script
+    },
+    { // typography_opentype
+        "+trad", // features
+    },
+
+};
