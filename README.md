@@ -39,4 +39,29 @@ So a single reader can accept both formats.
 
 
 
+## Structured naming
+As an aside, my approach to naming might be unfamiliar.
 
+With the usual CamelCase naming (and yes, I date before that was new), 
+in a smart IDE, the grouping of members is a bit random.
+This bothered me.
+
+Over time, I noticed that classes tended to have *facets*.
+When those facets were separable, they might turn into *interfaces*.
+But rather often the facets of an object were more dependent, and not truly separable from the class.
+(Should mention "mixins" from the Lisp world, but pre-web so links are scarce.)
+
+You might also note that I use a minimalist version of "Hungarian" notation.
+(And yes, I spent time in Win16, where this got a bit extreme, of need.)
+
+The minimalist end is:
+* Method names with the most significant bit first. Something like: ```facet_subfacet_operation()```
+* Class names end with "_o".
+* Object names start with "o_" (mostly).
+* Pointer names start with "p_".
+* Index names start with "i_".
+* Count names start with "n_".
+* String names start with "s_" (mostly).
+* Array names start with "a_" (sometimes).
+
+Not remotely religious about any of the above, but works for me.
