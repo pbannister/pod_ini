@@ -113,6 +113,89 @@ base_hash::hash_list_o::~hash_list_o() {
     n_nodes = 0;
 }
 
+//
+//  Sort the hash list.
+//
+
+void base_hash::hash_list_o::list_sort() {
+    ::qsort(pp_list, n_nodes, sizeof(base_hash::node_p), [](const void* p1, const void* p2) {
+        auto n1 = *(base_hash::node_p*) p1;
+        auto n2 = *(base_hash::node_p*) p2;
+        return ::strcmp(n1->key.buffer_get(), n2->key.buffer_get());
+    });
+}
+//
+//
+//
+
+static constexpr unsigned N_PARTS_MAX = 20;
+
+struct key_parts_o {
+    string_o parts;
+    unsigned ac = 0;
+    const char* av[N_PARTS_MAX + 1] = {0};
+    key_parts_o(const char*);
+};
+
+key_parts_o::key_parts_o(const char* s) {
+    parts = s;
+    auto p1 = parts.buffer_get();
+    for (ac = 0;;) {
+        av[ac++] = p1;
+        if (N_PARTS_MAX <= ac) {
+            break;
+        }
+        p1 = ::strchr(p1, '.');
+        if (!p1) {
+            break;
+        }
+        *p1++ = 0;
+    }
+    av[ac] = 0;
+}
+
+//
+//  Add list to tree.
+//
+
+void base_hash::counted_tree_o::tree_insert_node(node_p p_node) {
+    key_parts_o k_node(p_node->key);
+    auto p_check = this;
+    unsigned i = 0;
+    // Walk down the existing tree.
+    for (; i < k_node.ac;) {
+        const char* k1 = p_check->key.buffer_get();
+        const char* k2 = k_node.av[i];
+        if (0 == ::strcmp(k1, k2)) {
+            ++i;  // consume the key
+            if (!p_check->p_right) {
+                break;
+            }
+            p_check = p_check->p_right;
+        } else {
+            if (!p_check->p_after) {
+                p_check->p_after = new counted_tree_o(k_node.av[i++]);
+                p_check = p_check->p_after;
+                break;
+            }
+            p_check = p_check->p_after;
+        }
+    }
+    // Must create remainder of branch.
+    for (; i < k_node.ac; ++i) {
+        p_check->p_right = new counted_tree_o(k_node.av[i]);
+        p_check = p_check->p_right;
+    }
+    // Associate the value.
+    p_check->p_node = p_node;
+}
+
+void base_hash::counted_tree_o::list_add(hash_list_o& list) {
+    for (unsigned i = 0; i < list.n_nodes; ++i) {
+        auto p = list.pp_list[i];
+        tree_insert_node(p);
+    }
+}
 static const char s_spaces[] =
     "| | | | | | | | | | | | | | | | | | | | | | | | | "  //
     "| | | | | | | | | | | | | | | | | | | | | | | | | "  //

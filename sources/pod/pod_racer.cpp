@@ -1,4 +1,5 @@
 #include "pod/pod_racer.h"
+#include "base/hash.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -256,84 +257,6 @@ pod_reader_o::~pod_reader_o() {
 }
 
 //
-//  POD sorted hash list.
-//
-
-void pod_racer::pod_hashtable_o::table_sort(hash_list_o& list) {
-    ::qsort(list.pp_list, list.n_nodes, sizeof(base_hash::node_p), [](const void* p1, const void* p2) {
-        auto n1 = *(base_hash::node_p*) p1;
-        auto n2 = *(base_hash::node_p*) p2;
-        return ::strcmp(n1->key.buffer_get(), n2->key.buffer_get());
-    });
-}
-
-//
-//
-//
-
-static constexpr unsigned N_PARTS_MAX = 20;
-
-struct pod_racer::key_parts_o {
-    string_o parts;
-    unsigned ac = 0;
-    const char* av[N_PARTS_MAX + 1] = {0};
-    key_parts_o(const char*);
-};
-
-pod_racer::key_parts_o::key_parts_o(const char* s) {
-    parts = s;
-    auto p1 = parts.buffer_get();
-    for (ac = 0;;) {
-        av[ac++] = p1;
-        if (N_PARTS_MAX <= ac) {
-            break;
-        }
-        p1 = ::strchr(p1, '.');
-        if (!p1) {
-            break;
-        }
-        *p1++ = 0;
-    }
-    av[ac] = 0;
-}
-
-//
-//  POD tree insert - assumes inserts are in sorted order.
-//
-
-void pod_racer::pod_hashtable_o::tree_insert_node(counted_tree_o& root, node_p p_node) {
-    key_parts_o k_node(p_node->key);
-    auto p_check = &root;
-    unsigned i = 0;
-    // Walk down the existing tree.
-    for (; i < k_node.ac;) {
-        const char* k1 = p_check->key.buffer_get();
-        const char* k2 = k_node.av[i];
-        if (0 == ::strcmp(k1, k2)) {
-            ++i;  // consume the key
-            if (!p_check->p_right) {
-                break;
-            }
-            p_check = p_check->p_right;
-        } else {
-            if (!p_check->p_after) {
-                p_check->p_after = new counted_tree_o(k_node.av[i++]);
-                p_check = p_check->p_after;
-                break;
-            }
-            p_check = p_check->p_after;
-        }
-    }
-    // Must create remainder of branch.
-    for (; i < k_node.ac; ++i) {
-        p_check->p_right = new counted_tree_o(k_node.av[i]);
-        p_check = p_check->p_right;
-    }
-    // Associate the value.
-    p_check->p_node = p_node;
-}
-
-//
 //
 //
 
@@ -361,23 +284,20 @@ void pod_racer::counted_tree_o::tree_print_nodes(const char* prefix, unsigned i1
 //
 //
 
-unsigned pod_racer::pod_hashtable_o::tree_count_nodes(counted_tree_o* p_tree) {
-    if (!p_tree) {
-        return 0;
-    }
+unsigned base_hash::counted_tree_o::tree_count_nodes() {
     unsigned n1 = 0;
     unsigned n2 = 0;
     unsigned n3 = 0;
-    if (p_tree->p_node) {
+    if (p_node) {
         n1 = 1;
     }
-    if (p_tree->p_right) {
-        n2 = tree_count_nodes(p_tree->p_right);
+    if (p_right) {
+        n2 = p_right->tree_count_nodes();
     }
-    if (p_tree->p_after) {
-        n3 = tree_count_nodes(p_tree->p_after);
+    if (p_after) {
+        n3 = p_after->tree_count_nodes();
     }
-    p_tree->count = (n1 + n2);
+    count = (n1 + n2);
     return (n1 + n2 + n3);
 }
 
@@ -401,7 +321,7 @@ void pod_hashtable_o::table_print_unsorted() {
 void pod_racer::pod_hashtable_o::table_print_sorted() {
     base_hash::hash_list_o list;
     table.as_list(list);
-    table_sort(list);
+    list.list_sort();
     for (unsigned i = 0; i < list.n_nodes; ++i) {
         auto p = list.pp_list[i];
         ::printf("[%u] %s = %s\n", i, p->key.buffer_get(), p->value.buffer_get());
@@ -415,13 +335,9 @@ void pod_racer::pod_hashtable_o::table_print_sorted() {
 void pod_racer::pod_hashtable_o::table_print_counts() {
     base_hash::hash_list_o list;
     table.as_list(list);
-    table_sort(list);
-    base_hash::counted_tree_o tree(k_GLOBAL);
-    for (unsigned i = 0; i < list.n_nodes; ++i) {
-        auto p = list.pp_list[i];
-        tree_insert_node(tree, p);
-    }
-    unsigned n_total = tree_count_nodes(&tree);
+    list.list_sort();
+    base_hash::counted_tree_o tree(k_GLOBAL, list);
+    unsigned n_total = tree.tree_count_nodes();
     ::printf("Total: %u\n", n_total);
     tree.tree_print_nodes();
 }
@@ -432,7 +348,7 @@ void pod_racer::pod_hashtable_o::table_print_counts() {
 
 void pod_racer::pod_hashtable_o::table_print_pod() {
     base_hash::hash_list_o list;
-    table_sort(list);
+    list.list_sort();
     // string_o prefix1 = "";
     // for (unsigned i = 0; i < list.n_nodes; ++i) {
     //     auto kv = list.pp_list[i];

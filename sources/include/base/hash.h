@@ -2,7 +2,7 @@
 #include "strings.h"
 
 namespace base_hash {
-    
+
 using base_strings::string_o;
 
 struct node_o {
@@ -27,6 +27,7 @@ struct hash_list_o {
     unsigned n_nodes = 0;
     node_o** pp_list = 0;
     ~hash_list_o();
+    void list_sort();
 };
 
 //
@@ -42,13 +43,20 @@ struct counted_tree_o {
     counted_tree_o(const char* k) :
         key(k) {
     }
+    counted_tree_o(const char* k, hash_list_o& list) :
+        key(k) {
+        list_add(list);
+    }
     ~counted_tree_o() {
         delete p_right;
         delete p_after;
         p_right = p_after = 0;
     }
+    void list_add(hash_list_o&);
+    void tree_insert_node(node_p);
     void tree_print(unsigned i1 = 0, unsigned i2 = 0);
     void tree_print_nodes(const char* prefix = "", unsigned i1 = 0, unsigned i2 = 0);
+    unsigned tree_count_nodes();
 };
 
 //
