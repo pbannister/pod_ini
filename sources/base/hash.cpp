@@ -230,3 +230,80 @@ void base_hash::tree_root_o::tree_print_ini() {
     }
     ::printf("\n");
 }
+
+//
+//
+//
+
+static void string_filter(char* s1, char c1, char c2) {
+    for (; *s1; ++s1) {
+        if (*s1 == c1) {
+            *s1 = c2;
+        }
+    }
+}
+
+static void string_requote(string_o& s1, string_o& s2) {
+    auto n = ::strlen(s1);
+    s2.buffer_get(2 * n);
+    auto p1 = s1.buffer_get();
+    auto p2 = s2.buffer_get();
+    for (;;) {
+        auto c1 = *p1++;
+        if (!c1) {
+            break;
+        }
+        if ('"' == c1) {
+            *p2++ = '\\';
+            *p2++ = '"';
+        } else if ('\\' == c1) {
+            *p2++ = '\\';
+            *p2++ = '\\';
+        } else {
+            *p2++ = c1;
+        }
+    }
+    *p2 = 0;
+}
+
+//
+//
+//
+
+void base_hash::tree_root_o::tree_print_pod_struct() {
+    ::printf("\nextern struct configuration_pod_t {\n");
+    for (auto p_section = p_section_head; p_section; p_section = p_section->p_section_next) {
+        string_o section_name(p_section->key);
+        string_filter(section_name.buffer_get(), '.', '_');
+        ::printf("    struct configuration_pod_%s_t {\n", section_name.buffer_get());
+        for (auto p_value = p_section->p_value_head; p_value; p_value = p_value->p_value_next) {
+            auto key1 = p_value->p_node->key.buffer_get();
+            auto key2 = (::strchr(key1, '!') + 1);
+            ::printf("        const char* %s;\n", key2);
+        }
+        ::printf("    } %s;\n", section_name.buffer_get());
+    }
+    ::printf("\n} configuration_pod;\n");
+}
+
+//
+//
+//
+
+void base_hash::tree_root_o::tree_print_pod_initialize() {
+    ::printf("\nstruct configuration_pod_t configuration_pod = {\n");
+    for (auto p_section = p_section_head; p_section; p_section = p_section->p_section_next) {
+        string_o section_name(p_section->key);
+        string_filter(section_name.buffer_get(), '.', '_');
+        ::printf("    { // %s\n", section_name.buffer_get());
+        for (auto p_value = p_section->p_value_head; p_value; p_value = p_value->p_value_next) {
+            auto key1 = p_value->p_node->key.buffer_get();
+            auto key2 = (::strchr(key1, '!') + 1);
+            string_o quoted;
+            string_requote(p_value->p_node->value, quoted);
+            ::printf("        \"%s\", // %s\n", quoted.buffer_get(), key2);
+        }
+        ::printf("    },\n");
+    }
+    ::printf("\n};\n");
+}

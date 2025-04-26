@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/build/bin/pod_racer",
             "args": [
-                "-vi",
+                "-p",
                 "_all.ini"
             ],
             "stopAtEntry": false,

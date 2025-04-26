@@ -11,7 +11,8 @@ struct options_o {
     int want_sorted = 0;
     int want_counts = 0;
     int want_ini = 0;
-    int want_pod = 0;
+    int want_pod_struct = 0;
+    int want_pod_initializer = 0;
 };
 
 int is_verbose(int) {
@@ -33,7 +34,8 @@ static void usage(char** av) {
         "\n\t-u       Print unsorted hash table"
         "\n\t-s       Print sorted hash table"
         "\n\t-i       Print INI file format"
-        "\n\t-p       Print POD table"
+        "\n\t-d       Print POD struct declaration"
+        "\n\t-D       Print POD struct initializer"
         "\n\nReads POD files and prints the hash table."
         "\n",
         av[0]);
@@ -46,7 +48,7 @@ static void usage(char** av) {
 
 bool options_get(int ac, char** av) {
     for (;;) {
-        int c = ::getopt(ac, av, "vusip");
+        int c = ::getopt(ac, av, "vusidD");
         if (c < 0) {
             break;
         }
@@ -63,8 +65,11 @@ bool options_get(int ac, char** av) {
         case 'i':
             g_options.want_ini++;
             break;
-        case 'p':
-            g_options.want_pod++;
+        case 'd':
+            g_options.want_pod_struct++;
+            break;
+        case 'D':
+            g_options.want_pod_initializer++;
             break;
         default:
             usage(av);
@@ -85,9 +90,13 @@ int main(int ac, char** av) {
 
     // Read all files into a hash table.
     pod_racer::pod_hashtable_o table;
-    for (int i = 1; i < ac; ++i) {
+    for (int i = optind; i < ac; ++i) {
         pod_racer::pod_reader_o pod(table);
-        pod.file_read(av[i]);
+        auto ok = pod.file_read(av[i]);
+        if (!ok) {
+            ::printf("ERROR cannot read file: %s\n", av[i]);
+            return 1;
+        }
     }
 
     // Convert the hash table to a list.
@@ -112,8 +121,11 @@ int main(int ac, char** av) {
     if (g_options.want_ini) {
         tree.tree_print_ini();
     }
-    if (g_options.want_pod) {
-        // table.table_print_pod();
+    if (g_options.want_pod_struct) {
+        tree.tree_print_pod_struct();
+    }
+    if (g_options.want_pod_initializer) {
+        tree.tree_print_pod_initialize();
     }
     return 0;
 }

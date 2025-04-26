@@ -90,7 +90,7 @@ bool pod_reader_o::scan_buffer() {
         scan_line(p_bol, p_eol);
         p_bol = (p_eol + 1);
     }
-    return false;
+    return true;
 }
 
 //
@@ -111,6 +111,8 @@ bool pod_reader_o::scan_line(char* p_bol, char* p_eol) {
     case 0:
         // empty line
         break;
+    case '/':
+    case ';':
     case '#':
         // Comment
         return true;

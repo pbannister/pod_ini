@@ -66,6 +66,8 @@ class tree_root_o {
 public:
     void list_add(hash_list_o&);
     void tree_print_ini();
+    void tree_print_pod_struct();
+    void tree_print_pod_initialize();
 };
 
 }  // namespace base_hash
