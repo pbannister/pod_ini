@@ -9,6 +9,9 @@
 #include <errno.h>
 #include <ctype.h>
 
+typedef unsigned char char_t;
+typedef unsigned char* char_p;
+
 //
 //  Simple file helper class.
 //
@@ -121,10 +124,10 @@ bool pod_reader_o::scan_buffer() {
 //
 
 bool pod_reader_o::scan_line(char* p_bol, char* p_eol) {
-    for (; ((p_bol < p_eol) && (*p_bol <= ' ')); ++p_bol) {
+    for (; ((p_bol < p_eol) && (char_t(*p_bol) <= ' ')); ++p_bol) {
         // skip leading whitespace
     }
-    for (auto p = (p_eol - 1); ((p_bol < p) && (*p <= ' ')); --p) {
+    for (auto p = (p_eol - 1); ((p_bol < p) && (char_t(*p) <= ' ')); --p) {
         // skip trailing whitespace
         *p = 0;
         p_eol = p;
@@ -161,10 +164,10 @@ bool pod_reader_o::scan_section_key(char* p_bol, char* p_eol) {
         *p_eol-- = 0;  // drop ']'
     }
     ++p_bol;  // skip '['
-    for (; (p_bol < p_eol) && (*p_bol <= ' '); ++p_bol) {
+    for (; (p_bol < p_eol) && (char_t(*p_bol) <= ' '); ++p_bol) {
         // skip leading whitespace
     }
-    for (; (p_bol < p_eol) && (*p_eol <= ' '); --p_eol) {
+    for (; (p_bol < p_eol) && (char_t(*p_eol) <= ' '); --p_eol) {
         // skip trailing whitespace
     }
     *p_eol = 0;
@@ -199,11 +202,11 @@ bool pod_reader_o::scan_key_value(char* p_bol, char* p_eol) {
     auto p_bov = p_eq;
     auto p_eov = p_eol;
     // Trim whitespace from assignment.
-    for (; (p_bok < p_eok) && (*(p_eok - 1) <= ' ');) {
+    for (; (p_bok < p_eok) && (char_t(*(p_eok - 1)) <= ' ');) {
         // drop trailing whitespace on key
         *--p_eok = 0;
     }
-    for (; (p_bov < p_eov) && (*p_bov <= ' ');) {
+    for (; (p_bov < p_eov) && (char_t(*p_bov) <= ' ');) {
         // drop leading whitespace on value
         *p_bov++ = 0;
     }

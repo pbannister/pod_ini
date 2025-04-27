@@ -237,7 +237,7 @@ void base_hash::tree_root_o::tree_print_ini() {
             auto s_key = p_value->p_node->key.buffer_get();
             auto s_value = p_value->p_node->value.buffer_get();
             auto s_k = (::strchr(s_key, '!') + 1);
-            ::printf("%s='%s'\n", s_k, s_value);
+            ::printf("%s=%s\n", s_k, s_value);
         }
     }
     ::printf("\n");
