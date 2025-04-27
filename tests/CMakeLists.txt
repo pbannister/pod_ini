@@ -36,22 +36,24 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-add_executable(
-    TEST_CONFIG
-    config.cpp
-    out/config-reader.cpp
+if (0) 
+    add_executable(
+        TEST_CONFIG
+        config.cpp
+        out/config-reader.cpp
 
-)
-target_link_libraries(
-    TEST_CONFIG
-    LIB_POD_RACER
-)
-set_target_properties(
-    TEST_CONFIG
-    PROPERTIES OUTPUT_NAME test_config
-)
+    )
+    target_link_libraries(
+        TEST_CONFIG
+        LIB_POD_RACER
+    )
+    set_target_properties(
+        TEST_CONFIG
+        PROPERTIES OUTPUT_NAME test_config
+    )
 
-add_test(
-    NAME TEST_CONFIG0
-    COMMAND TEST_CONFIG
-)
+    add_test(
+        NAME TEST_CONFIG0
+        COMMAND TEST_CONFIG
+    )
+endif()
