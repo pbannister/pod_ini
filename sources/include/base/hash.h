@@ -68,6 +68,7 @@ public:
     void tree_print_ini();
     void tree_print_pod_struct();
     void tree_print_pod_initialize();
+    void tree_print_pod_reader();
 };
 
 }  // namespace base_hash

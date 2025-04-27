@@ -4,6 +4,11 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
+
+//
+//  Simple hash table using Pearson's hash function.
+//
 
 static constexpr unsigned N_256 = 256;
 static unsigned T256[N_256] = {0};
@@ -34,10 +39,12 @@ hash256_o::~hash256_o() {
     }
 }
 
+// Pearon's hash function.
+
 static inline unsigned hash256(const char* p) {
     unsigned h = 0;  // seed
     for (; *p; ++p) {
-        h = (h ^ T256[(h ^ *p) & 0xFF]);
+        h = (h ^ T256[255 & (h ^ *p)]);
     }
     return (255 & h);
 }
@@ -76,9 +83,7 @@ const char* hash256_o::hash_kv_get(const char* k) {
     return 0;
 }
 
-//
-//
-//
+//  Count the nodes in the hash table.
 
 unsigned hash256_o::node_count() const {
     unsigned n = 0;
@@ -91,7 +96,7 @@ unsigned hash256_o::node_count() const {
 }
 
 //
-//
+//  Make a list from a hash table.
 //
 
 void hash256_o::as_list(hash_list_o& list) {
@@ -121,12 +126,12 @@ void base_hash::hash_list_o::list_sort() {
     ::qsort(pp_list, n_nodes, sizeof(base_hash::node_p), [](const void* p1, const void* p2) {
         auto n1 = *(base_hash::node_p*) p1;
         auto n2 = *(base_hash::node_p*) p2;
-        return ::strcmp(n1->key.buffer_get(), n2->key.buffer_get());
+        return ::strcmp(n1->key, n2->key);
     });
 }
 
 //
-//
+//  Print the hash list.
 //
 
 void base_hash::hash_list_o::list_print() {
@@ -137,7 +142,7 @@ void base_hash::hash_list_o::list_print() {
 }
 
 //
-//
+//  Split a '.' separated key into parts.
 //
 
 static constexpr unsigned N_PARTS_MAX = 20;
@@ -171,7 +176,7 @@ key_parts_o::key_parts_o(const char* s) {
 }
 
 //
-//
+//  Add items from a hash list into a INI-style sectioned tree.
 //
 
 struct base_hash::tree_root_o::value_o {
@@ -217,7 +222,14 @@ void base_hash::tree_root_o::list_add(hash_list_o& list) {
     }
 }
 
+//
+//  Generate an INI file from the tree.
+//
+
 void base_hash::tree_root_o::tree_print_ini() {
+    auto t_now = ::time(0);
+    auto s_now = ::ctime(&t_now);
+    ::printf("// Generated date: %s", s_now);
     for (auto p_section = p_section_head; p_section; p_section = p_section->p_section_next) {
         auto s_section = p_section->key.buffer_get();
         ::printf("\n[%s]\n", s_section);
@@ -232,7 +244,7 @@ void base_hash::tree_root_o::tree_print_ini() {
 }
 
 //
-//
+//  Replace one character witn another in a string.
 //
 
 static void string_filter(char* s1, char c1, char c2) {
@@ -242,6 +254,10 @@ static void string_filter(char* s1, char c1, char c2) {
         }
     }
 }
+
+//
+//  Quote characters in an string as needed for C++ source.
+//
 
 static void string_requote(string_o& s1, string_o& s2) {
     auto n = ::strlen(s1);
@@ -267,11 +283,18 @@ static void string_requote(string_o& s1, string_o& s2) {
 }
 
 //
-//
+//  Generate the structure definition for the POD.
 //
 
 void base_hash::tree_root_o::tree_print_pod_struct() {
+    auto t_now = ::time(0);
+    auto s_now = ::ctime(&t_now);
+    ::printf("#pragma once\n");
+    ::printf("// Generated date: %s", s_now);
     ::printf("\nextern struct configuration_pod_t {\n");
+    ::printf("    struct table_o* p_table;\n");
+    ::printf("    bool pod_load(const char*);\n");
+    ::printf("    bool pod_save(const char*);\n");
     for (auto p_section = p_section_head; p_section; p_section = p_section->p_section_next) {
         string_o section_name(p_section->key);
         string_filter(section_name.buffer_get(), '.', '_');
@@ -287,11 +310,16 @@ void base_hash::tree_root_o::tree_print_pod_struct() {
 }
 
 //
-//
+//  Generate the initializer for the POD.
 //
 
 void base_hash::tree_root_o::tree_print_pod_initialize() {
+    auto t_now = ::time(0);
+    auto s_now = ::ctime(&t_now);
+    ::printf("#pragma once\n");
+    ::printf("// Generated date: %s", s_now);
     ::printf("\nstruct configuration_pod_t configuration_pod = {\n");
+    ::printf("    0,\n");
     for (auto p_section = p_section_head; p_section; p_section = p_section->p_section_next) {
         string_o section_name(p_section->key);
         string_filter(section_name.buffer_get(), '.', '_');
@@ -306,4 +334,25 @@ void base_hash::tree_root_o::tree_print_pod_initialize() {
         ::printf("    },\n");
     }
     ::printf("\n};\n");
+}
+
+//
+//  Generate a POD reader.
+//
+
+void base_hash::tree_root_o::tree_print_pod_reader() {
+    auto t_now = ::time(0);
+    auto s_now = ::ctime(&t_now);
+    ::printf("// Generated date: %s", s_now);
+    ::printf("#include \"config-declare.h\"\n");
+    ::printf("#include \"pod/pod-racer.h\"\n");
+    ::printf(
+        "\nbool configuration_pod_t::pod_load(const char *) {"
+        "\n        return false;"
+        "\n}\n"
+        "\nbool configuration_pod_t::pod_save(const char *) {"
+        "\n        return false;"
+        "\n}\n");
+
+    // TODO
 }

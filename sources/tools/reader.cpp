@@ -1,4 +1,4 @@
-#include "pod/pod_racer.h"
+#include "pod/pod-racer.h"
 #include "base/hash.h"
 
 #include <stdlib.h>
@@ -13,6 +13,7 @@ struct options_o {
     int want_ini = 0;
     int want_pod_struct = 0;
     int want_pod_initializer = 0;
+    int want_pod_reader = 0;
 };
 
 int is_verbose(int) {
@@ -22,7 +23,7 @@ int is_verbose(int) {
 options_o g_options;
 
 //
-//
+//  Bit of usage information.
 //
 
 static void usage(char** av) {
@@ -36,6 +37,7 @@ static void usage(char** av) {
         "\n\t-i       Print INI file format"
         "\n\t-d       Print POD struct declaration"
         "\n\t-D       Print POD struct initializer"
+        "\n\t-R       Print POD struct reader"
         "\n\nReads POD files and prints the hash table."
         "\n",
         av[0]);
@@ -43,12 +45,12 @@ static void usage(char** av) {
 }
 
 //
-//
+//  Fetch options from command line.
 //
 
 bool options_get(int ac, char** av) {
     for (;;) {
-        int c = ::getopt(ac, av, "vusidD");
+        int c = ::getopt(ac, av, "vusidDR");
         if (c < 0) {
             break;
         }
@@ -70,6 +72,9 @@ bool options_get(int ac, char** av) {
             break;
         case 'D':
             g_options.want_pod_initializer++;
+            break;
+        case 'R':
+            g_options.want_pod_reader++;
             break;
         default:
             usage(av);
@@ -126,6 +131,9 @@ int main(int ac, char** av) {
     }
     if (g_options.want_pod_initializer) {
         tree.tree_print_pod_initialize();
+    }
+    if (g_options.want_pod_reader) {
+        tree.tree_print_pod_reader();
     }
     return 0;
 }

@@ -1,8 +1,10 @@
 
-set(D_IN            ${CMAKE_CURRENT_SOURCE_DIR}/in)
-set(D_OUT           ${CMAKE_CURRENT_SOURCE_DIR}/out)
+set(D_IN ${CMAKE_CURRENT_SOURCE_DIR}/in)
+set(D_OUT ${CMAKE_CURRENT_SOURCE_DIR}/out)
 #set(IN_EXAMPLE1     ${D_IN}/example1.ini)
-set(IN_EXAMPLE1     in/example1.ini)
+set(IN_EXAMPLE1 in/example1.ini)
+
+include_directories(${PROJECT_SOURCE_DIR}/sources/include)
 
 add_test(
     NAME POD_RACER0
@@ -25,7 +27,7 @@ add_test(
 )
 add_test(
     NAME POD_RACER4
-    COMMAND POD_RACER -d ${IN_EXAMPLE1} 
+    COMMAND POD_RACER -d ${IN_EXAMPLE1}
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 add_test(
@@ -37,10 +39,19 @@ add_test(
 add_executable(
     TEST_CONFIG
     config.cpp
+    out/config-reader.cpp
+
+)
+target_link_libraries(
+    TEST_CONFIG
+    LIB_POD_RACER
 )
 set_target_properties(
     TEST_CONFIG
     PROPERTIES OUTPUT_NAME test_config
 )
 
-add_test(NAME TEST_CONFIG0 COMMAND TEST_CONFIG)
+add_test(
+    NAME TEST_CONFIG0
+    COMMAND TEST_CONFIG
+)

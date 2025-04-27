@@ -1,4 +1,4 @@
-#include "pod/pod_racer.h"
+#include "pod/pod-racer.h"
 #include "base/hash.h"
 
 #include <stdlib.h>
@@ -58,22 +58,45 @@ struct file_o {
 using namespace pod_racer;
 
 //
+//
+//
+
+void pod_reader_o::buffer_o::buffer_allocate(unsigned n_want) {
+    p_buffer = new char[n_want];
+    n_room = n_want;
+}
+
+pod_reader_o::buffer_o::~buffer_o() {
+    delete p_buffer;
+    p_buffer = 0;
+    n_room = n_have = 0;
+}
+
+bool pod_reader_o::buffer_o::buffer_load(const char* filename) {
+    file_o file;
+    if (!file.file_open_read(filename)) {
+        return false;
+    }
+    unsigned n_want = file.file_size();
+    buffer_allocate(n_want + 2);  // room for sentinels
+    if (!file.file_read(p_buffer, n_want)) {
+        return false;
+    }
+    n_have = n_want;
+    p_buffer[n_want++] = '\n';
+    p_buffer[n_want++] = 0;
+    return true;
+}
+
+//
 //  POD file reader.
 //
 
 bool pod_reader_o::file_read(const char* _name) {
     filename = _name;
-    file_o file;
-    if (!file.file_open_read(filename)) {
+    if (!buffer.buffer_load(filename)) {
         return false;
     }
-    unsigned bytes_wanted = file.file_size();
-    p_buffer = new char[bytes_wanted + 1];
-    bytes_buffer = bytes_wanted;
-    if (!file.file_read(p_buffer, bytes_wanted)) {
-        return false;
-    }
-    p_buffer[bytes_buffer] = '\n';  // ensure terminated.
     return scan_buffer();
 }
 
@@ -82,8 +105,8 @@ bool pod_reader_o::file_read(const char* _name) {
 //
 
 bool pod_reader_o::scan_buffer() {
-    const auto p_bob = (p_buffer);
-    const auto p_eob = (p_buffer + bytes_buffer);
+    const auto p_bob = (buffer.p_buffer);
+    const auto p_eob = (buffer.p_buffer + buffer.n_have);
     for (auto p_bol = p_bob; p_bol < p_eob;) {
         auto p_eol = ::strchr(p_bol, '\n');
         *p_eol = 0;
@@ -258,7 +281,29 @@ pod_reader_o::pod_reader_o(pod_hashtable_o& o) :
 //
 
 pod_reader_o::~pod_reader_o() {
-    delete p_buffer;
-    p_buffer = 0;
-    bytes_buffer = 0;
+}
+
+//
+//
+//
+
+bool pod_racer::configuration_context_o::file_read(const char* filename) {
+    return pod.file_read(filename);
+}
+
+bool pod_racer::configuration_context_o::tree_build() {
+    // Convert the hash table to a list.
+    base_hash::hash_list_o list;
+    table.as_list(list);
+
+    // Sort the list.
+    list.list_sort();
+
+    // Populate tree from the list.
+    tree.list_add(list);
+    return true;
+}
+
+bool pod_racer::configuration_context_o::pod_load(const char* filename) {
+    return file_read(filename) && tree_build();
 }

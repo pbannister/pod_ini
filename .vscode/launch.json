@@ -10,8 +10,8 @@
             "request": "launch",
             "program": "${workspaceFolder}/build/bin/pod_racer",
             "args": [
-                "-p",
-                "_all.ini"
+                "-i",
+                "tests/in/example1.ini"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

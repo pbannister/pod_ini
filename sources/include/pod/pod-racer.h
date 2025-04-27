@@ -41,8 +41,17 @@ protected:
     hashtable_p p_table = 0;
 
 protected:
-    char* p_buffer = 0;
-    unsigned bytes_buffer = 0;
+    struct buffer_o {
+        char* p_buffer = 0;
+        unsigned n_room = 0;
+        unsigned n_have = 0;
+        void buffer_allocate(unsigned n_want);
+        bool buffer_load(const char* filename);
+        ~buffer_o();
+    };
+
+protected:
+    buffer_o buffer;
 
 public:
     bool file_read(const char* _name);
@@ -60,6 +69,22 @@ protected:
 public:
     pod_reader_o(pod_hashtable_o& o);
     ~pod_reader_o();
+};
+
+//
+//
+//
+
+struct configuration_context_o {
+    pod_racer::pod_hashtable_o table;
+    pod_racer::pod_reader_o pod;
+    base_hash::tree_root_o tree;
+    bool file_read(const char*);
+    bool tree_build();
+    bool pod_load(const char*);
+    configuration_context_o() :
+        pod(table) {
+    }
 };
 
 }  // namespace pod_racer
