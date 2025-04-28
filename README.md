@@ -48,6 +48,9 @@ extern struct configuration_pod_t {
 
 Access to settings becomes:
 ```C++
+// Once
+configuration_pod.pod_load("settings.ini");
+// Later
 ::printf("When should we panic: %s\n", configuration_pod.s_panic.v_when);
 ```
 
