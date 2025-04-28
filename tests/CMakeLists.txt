@@ -1,8 +1,11 @@
+#
+#   The rules are not quite right here, as we depend on generated files.
+#   Generated files should not be checked in.
+#
 
 set(D_IN ${CMAKE_CURRENT_SOURCE_DIR}/in)
 set(D_OUT ${CMAKE_CURRENT_SOURCE_DIR}/out)
-#set(IN_EXAMPLE1     ${D_IN}/example1.ini)
-set(IN_EXAMPLE1 in/example1.ini)
+set(IN_EXAMPLE1 in/example-big.ini)
 
 include_directories(${PROJECT_SOURCE_DIR}/sources/include)
 
@@ -36,12 +39,11 @@ add_test(
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-if (0) 
+if (1) 
     add_executable(
         TEST_CONFIG
         config.cpp
         out/config-reader.cpp
-
     )
     target_link_libraries(
         TEST_CONFIG

@@ -57,11 +57,17 @@ public:
 //  Ordered by key in form for INI/PROPERTIES file.
 //
 
+struct section_o;
+struct value_o;
+
+extern const char* value_find(section_o*, const char*, const char*);
+
 class tree_root_o {
-    struct section_o;
-    struct value_o;
     section_o* p_section_head = 0;
     section_o* p_section_tail = 0;
+
+public:
+    section_o* section_find(const char*);
 
 public:
     void list_add(hash_list_o&);

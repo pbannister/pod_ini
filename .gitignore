@@ -1,6 +1,4 @@
 build
 examples
 _*
-#tests/out
-tests/out/example2.ini
-tests/out/config-reader0.cpp
+tests/out
