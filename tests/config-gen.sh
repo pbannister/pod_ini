@@ -27,13 +27,13 @@ ini_check() {
     diff -ub $TMP1 $TMP2
 }
 
-(NAME=small config_gen)
 (NAME=big   config_gen)
+(NAME=small config_gen)
 
 TMP1=/tmp/_file1
 TMP2=/tmp/_file2
 
-(NAME=small ini_check)
 (NAME=big   ini_check)
+(NAME=small ini_check)
 
 
