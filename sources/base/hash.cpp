@@ -401,8 +401,7 @@ void base_hash::tree_root_o::tree_print_pod_reader() {
         "\n    p_context = new context_o();"
         "\n    if (!p_context->pod_load(filename)) {"
         "\n        return false;"
-        "\n    }"
-        "\n");
+        "\n    }");
     for (auto p_section = p_section_head; p_section; p_section = p_section->p_section_next) {
         string_o section_name(p_section->key);
         string_filter(section_name.buffer_get(), '.', '_');
@@ -424,8 +423,7 @@ void base_hash::tree_root_o::tree_print_pod_reader() {
         }
         ::printf(
             "\n        }"
-            "\n    }"
-            "\n");
+            "\n    }");
     }
     ::printf(
         "\n    return true;"
