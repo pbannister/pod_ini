@@ -54,16 +54,6 @@ configuration_pod.pod_load("settings.ini");
 ::printf("When should we panic: %s\n", configuration_pod.s_panic.v_when);
 ```
 
-
-## POD racer
-(Yeh. I just liked the name.)
-
-Ingests structured configuration files (either/both **ini** or **properties**).
-Ingests the entire configuration file in a single ``read()``,
-then optimally splits key/values out of that block.
-
-Generate C++ structures, then code to read into those structures.
-
 ## Structured storage and common representation
 INI files are grouped by ``[section]`` with associated ``key=value`` assignments.
 
@@ -75,6 +65,38 @@ You can unify both formats by treating INI files as yielding ``section.key=value
 
 Conversely, PROPERTIES can become ``[us.bannister]`` and ``key=value``.
 So a single reader can accept both formats.
+
+
+## POD racer
+(Yeh. I just liked the name.)
+
+Ingests structured configuration files (either/both **ini** or **properties**).
+Ingests the entire configuration file in a single ``read()``,
+then optimally splits key/values out of that block.
+
+End is to generate C++ structures, then code to read into those structures.
+
+Note there is no conversion from strings to other types. 
+This is intentional.
+
+
+## POD valid
+
+Configuration files are just named bundles of strings.
+Validation is needed to ensure a string represents an acceptable value.
+The temptation is to bundle validation with configuration.
+This is a mistake. Validation is an independent concern.
+
+The provided "pod/pod_valid.h" include with pod_valid::validator_o class is meant as an example.
+This is meant as an example pattern - which you extend to suit your application.
+(Note you might follow a similar pattern to validate incoming parameters on a web API.)
+
+Usage is simple and clean.
+```C
+auto v = pod_valid::validator_o(configuration_pod.s_panic.v_when).as_integer().in_range(1, 10).limit_range(2, 6);
+::printf("in: %s value: %li valid: %u\n", configuration_pod.s_panic.v_when, v.value, v.valid);
+```
+You can and should extend the above pattern to suit your use.
 
 
 ## Structured naming
