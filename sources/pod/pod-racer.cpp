@@ -160,14 +160,14 @@ static const char* k_GLOBAL = "GLOBAL";
 
 bool pod_reader_o::scan_section_key(char* p_bol, char* p_eol) {
     // Extract section key between '[' and ']'
-    if (']' == *(p_eol - 1)) {
-        *p_eol-- = 0;  // drop ']'
+    if (']' == p_eol[-1]) {
+        *--p_eol = 0;  // drop ']'
     }
     ++p_bol;  // skip '['
     for (; (p_bol < p_eol) && (char_t(*p_bol) <= ' '); ++p_bol) {
         // skip leading whitespace
     }
-    for (; (p_bol < p_eol) && (char_t(*p_eol) <= ' '); --p_eol) {
+    for (; (p_bol < p_eol) && (char_t(p_eol[-1]) <= ' '); --p_eol) {
         // skip trailing whitespace
     }
     *p_eol = 0;
