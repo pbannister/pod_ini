@@ -4,9 +4,49 @@
 #include <malloc.h>
 #include <stdint.h>
 
+#include <pthread.h>
+#include <threads.h>
+
+#define WANT_STRING_SCORECARD 0
+
 extern bool is_verbose(int n = 1);
 
 using namespace base_strings;
+
+// For debugging.
+struct scorecard_o {
+    unsigned n1_new = 0;
+    unsigned n1_free = 0;
+    unsigned n2_new = 0;
+    unsigned n2_free = 0;
+};
+
+#if WANT_STRING_SCORECARD
+#define X_TRACE(L)          \
+    {                       \
+        if (is_verbose()) { \
+            ::printf L;     \
+        }                   \
+    }
+
+#define SCORE_BUMP(W) \
+    {                 \
+        scores.W++;   \
+    }
+#else
+
+#define X_TRACE(L) \
+    {              \
+    }
+#define SCORE_BUMP(W) \
+    {                 \
+    }
+#endif
+
+#define N1_NEW() SCORE_BUMP(n1_new)
+#define N1_FREE() SCORE_BUMP(n1_free)
+#define N2_NEW() SCORE_BUMP(n2_new)
+#define N2_FREE() SCORE_BUMP(n2_free)
 
 //
 //  Strings of small/normal size are recycled for this string class.
@@ -24,7 +64,7 @@ struct string_recycler_o {
     };
 
     recycled_buffer_p p_free = 0;
-    string_o::scorecard_o scores;  // for debugging
+    scorecard_o scores;  // for debugging
 
     void free_print();
     void page_add();
@@ -39,36 +79,15 @@ struct string_recycler_o {
 
     string_recycler_o() {
         page_add();
+        // auto id_thread = ::pthread_self();
+        // ::printf("# thread: %8lu recycler: %p\n", id_thread, (void*) this);
     }
     ~string_recycler_o();
 };
 
-#if WANT_STRING_SCORECARD
-#define X_TRACE(L)          \
-    {                       \
-        if (is_verbose()) { \
-            ::printf L;     \
-        }                   \
-    }
-
-#define SCORE_BUMP(W) \
-    { scores.W++; }
-#else
-
-#define X_TRACE(L) \
-    {}
-#define SCORE_BUMP(W) \
-    {}
-#endif
-
-#define N1_NEW() SCORE_BUMP(n1_new)
-#define N1_FREE() SCORE_BUMP(n1_free)
-#define N2_NEW() SCORE_BUMP(n2_new)
-#define N2_FREE() SCORE_BUMP(n2_free)
-
 void string_recycler_o::free_print() {
     for (auto p = p_free; p; p = p->p_next) {
-        X_TRACE(("TRACE: %p : %p -- string on free list\n", this, p));
+        X_TRACE(("TRACE: %p : %p -- string on free list\n", (void*) this, (void*) p));
     }
 }
 
@@ -80,12 +99,12 @@ void string_recycler_o::page_add() {
         p->p_next = p_free;
         p_free = p;
     }
-    X_TRACE(("TRACE: %p : %p -- page add\n", this, p1));
-    free_print();
+    // X_TRACE(("TRACE: %p : %p -- page add\n", (void*) this, p1));
+    // free_print();
 }
 
 string_recycler_o::~string_recycler_o() {
-    X_TRACE(("TRACE: %p : %p -- list clean up\n", this, p_free));
+    X_TRACE(("TRACE: %p : %p -- list clean up\n", (void*) this, (void*) p_free));
     recycled_buffer_p p_pages = 0;
     unsigned mask = (n_size_page - 1);
     auto p_next = p_free;
@@ -97,13 +116,13 @@ string_recycler_o::~string_recycler_o() {
             p->p_next = p_pages;
             p_pages = p;
         }
-        X_TRACE(("TRACE: %p : %p -- string forget\n", this, p));
+        X_TRACE(("TRACE: %p : %p -- string forget\n", (void*) this, (void*) p));
     }
     while (p_pages) {
         auto p = p_pages;
         p_pages = p->p_next;
+        X_TRACE(("TRACE: %p : %p -- page free\n", (void*) this, (void*) p));
         ::free(p);
-        X_TRACE(("TRACE: %p : %p -- page free\n", this, p));
     }
 }
 
@@ -115,26 +134,26 @@ char* string_recycler_o::buffer_new() {
     auto p = p_free;
     p_free = p->p_next;
     p->p_next = 0;
-    X_TRACE(("TRACE: %p : %p -- allocate small string from free list\n", this, p));
+    X_TRACE(("TRACE: %p : %p -- allocate small string from free list\n", (void*) this, (void*) p));
     return (char*) p;
 }
 
 char* string_recycler_o::buffer_new(unsigned n) {
     N2_NEW();
     auto p = new char[n + 1];
-    X_TRACE(("TRACE: %p : %p -- allocate small string from memory\n", this, p));
+    X_TRACE(("TRACE: %p : %p -- allocate small string from memory\n", (void*) this, p));
     return p;
 }
 
 void string_recycler_o::buffer_free(char* s, unsigned n) {
     if ((n + 1) == n_size_small) {
-        X_TRACE(("TRACE: %p : %p -- recycle small string\n", this, s));
+        X_TRACE(("TRACE: %p : %p -- recycle small string\n", (void*) this, s));
         N1_FREE();
         auto p = (recycled_buffer_p) s;
         p->p_next = p_free;
         p_free = p;
     } else {
-        X_TRACE(("TRACE: %p : %p -- free large string\n", this, s));
+        X_TRACE(("TRACE: %p : %p -- free large string\n", (void*) this, s));
         N2_FREE();
         delete s;
     }
@@ -148,9 +167,9 @@ void string_recycler_o::buffer_free(char* s, unsigned n) {
 static thread_local string_recycler_o recycler;
 
 // For debugging.
-void string_o::scorecard_get(scorecard_o& o) {
-    o = recycler.scores;
-}
+// void string_o::scorecard_get(scorecard_o& o) {
+//     o = recycler.scores;
+// }
 
 string_o::string_o() {
     p_owner = &recycler;  // used only for identity.

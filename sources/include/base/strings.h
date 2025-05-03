@@ -2,8 +2,6 @@
 #include <string.h>
 #include <strings.h>
 
-#define WANT_STRING_SCORECARD 0
-
 namespace base_strings {
 
 //
@@ -63,16 +61,6 @@ public:
     string_o(const char*);
     string_o(const string_o&);
     ~string_o();
-
-public:
-    // For debugging.
-    struct scorecard_o {
-        unsigned n1_new = 0;
-        unsigned n1_free = 0;
-        unsigned n2_new = 0;
-        unsigned n2_free = 0;
-    };
-    static void scorecard_get(scorecard_o&);
 
 public:
     class exception_o {
