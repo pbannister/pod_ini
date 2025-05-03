@@ -57,10 +57,12 @@ int main(int, char**) {
         p_worker->i_thread = (100 + i);
         p_worker->n_iterations = (3 + ((i + 4) % 9));
         p_worker->t_sleep = os_clock::timed_ms_t(1000 + (400 * (i % 3)));
-        ::pthread_attr_t attr = {0};
+        ::pthread_attr_t attr;
+        ::pthread_attr_init(&attr);
         auto v = ::pthread_create(&p_worker->id_thread, &attr, worker_o::worker_start, p_worker);
         auto error = ((0 == v) ? 0 : errno);
         ::printf("# thread created: %i error: %u\n", v, error);
+        ::pthread_attr_destroy(&attr);
     }
 
     for (unsigned i = 0; i < n_workers; ++i) {
