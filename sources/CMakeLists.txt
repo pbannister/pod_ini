@@ -19,6 +19,10 @@ add_library(
     base/hash.cpp
     pod/pod-racer.cpp 
 )
+set_target_properties(
+    LIB_POD_RACER
+    PROPERTIES OUTPUT_NAME pod_racer
+)
 
 add_executable(
     POD_RACER
@@ -31,4 +35,17 @@ target_link_libraries(
 set_target_properties(
     POD_RACER
     PROPERTIES OUTPUT_NAME pod_racer
+)
+
+install(
+    TARGETS POD_RACER
+    DESTINATION bin
+)   
+install(
+    TARGETS LIB_POD_RACER
+    DESTINATION lib/pod
+)
+install(
+    DIRECTORY include/pod
+    DESTINATION include
 )

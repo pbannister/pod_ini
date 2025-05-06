@@ -5,7 +5,8 @@ project(
     DESCRIPTION "Example reader / generator for INI and PROPERTIES files."
 )
 
-set(CMAKE_CXX_STANDARD 17)
+# set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20) # for test - not needed.
 set(CMAKE_CXX_STANDARD_REQUIRED true)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -37,8 +38,12 @@ add_compile_options(-Werror)
 add_compile_options(-g)
 add_compile_options(-Og)
 
+add_subdirectory(sources)
+
+# for testing
+find_package(Threads REQUIRED)
+
 include(CTest)
 enable_testing()
 
-add_subdirectory(sources)
 add_subdirectory(tests)
