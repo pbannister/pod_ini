@@ -4,6 +4,11 @@ set(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
+add_custom_target(
+    VERSION_BUMP ALL
+    COMMAND /usr/bin/bash ${PROJECT_SOURCE_DIR}/scripts/mkversion.sh ${INCLUDE_POD}/versions/build.h
+)
+
 include_directories(
     ${INCLUDE_POD}
 )

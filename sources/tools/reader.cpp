@@ -1,6 +1,8 @@
 #include "pod/pod-racer.h"
 #include "base/hash.h"
 
+#include "versions/build.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <getopt.h>
@@ -89,6 +91,8 @@ bool options_get(int ac, char** av) {
 //
 
 int main(int ac, char** av) {
+    ::fprintf(stderr, "# version: %s branch: %s commit: %s\n", VERSION_STAMP, VERSION_BRANCH, VERSION_COMMIT);
+
     if (!options_get(ac, av)) {
         return 1;
     }
