@@ -1,6 +1,8 @@
 #pragma once
 //
-//
+//  Meant as a simple example of a POD data validator.
+//  Not meant to be a complete solution.
+//  Specialize for your needs.
 //
 #include <stdlib.h>
 #include <string.h>
